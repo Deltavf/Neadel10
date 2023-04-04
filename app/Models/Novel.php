@@ -18,4 +18,9 @@ class Novel extends Model
     public function user() {
         return $this->belongsTo(User::class);
     }
+
+    // Membuat relasi one to many dari model Novel ke model Volume
+    public function volumes() {
+        return $this->hasMany(Volume::class);
+    }
 }
