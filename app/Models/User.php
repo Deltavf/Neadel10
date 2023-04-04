@@ -41,4 +41,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // Membuat relasi one to many dari model User ke model Novel
+    public function novels() {
+        return $this->hasMany(Novel::class);
+    }
 }

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Genre extends Model
 {
     use HasFactory;
+
+    // Membuat relasi many to many dari model Genre ke model Novel
+    public function novels() {
+        return $this->belongsToMany(Novel::class);
+    }
 }
