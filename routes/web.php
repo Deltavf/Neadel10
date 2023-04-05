@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NovelController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,3 +20,11 @@ use App\Http\Controllers\NovelController;
 Route::get('/', [NovelController::class, 'index']);
 Route::get('/novel/{novel:slug}', [NovelController::class, 'detail']);
 Route::get('/novel/{novel:slug}/{volume:slug}', [NovelController::class, 'volume']);
+
+// Rute Register
+Route::get('/register', [RegisterController::class, 'index']);
+Route::post('/register', [RegisterController::class, 'register']);
+
+// Rute Login
+Route::get('/login', [LoginController::class, 'index']);
+Route::post('/login', [LoginController::class, 'login']);
