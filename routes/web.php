@@ -22,9 +22,9 @@ Route::get('/novel/{novel:slug}', [NovelController::class, 'detail']);
 Route::get('/novel/{novel:slug}/{volume:slug}', [NovelController::class, 'volume']);
 
 // Rute Register
-Route::get('/register', [RegisterController::class, 'index']);
-Route::post('/register', [RegisterController::class, 'register']);
+Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/register', [RegisterController::class, 'register'])->middleware('guest');
 
 // Rute Login
-Route::get('/login', [LoginController::class, 'index']);
-Route::post('/login', [LoginController::class, 'login']);
+Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
+Route::post('/login', [LoginController::class, 'login'])->middleware('guest');
