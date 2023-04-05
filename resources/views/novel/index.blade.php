@@ -16,18 +16,18 @@
         </form>
     </div>
 </div>
-@if($datas->count()) 
+@if($novels->count()) 
 <div class="row d-flex align-items-stretch">    
-    @foreach($datas as $data)
+    @foreach($novels as $novel)
     <div class="col-xl-2 col-lg-3 col-md-4 col-sm-6 col-6 d-flex align-items-stretch">
             <div class="card" style="width: 100%;">
-                <img src="{{ asset('img/novel/' . $data->cover) }}" class="thumb" alt="...">
+                <img src="{{ asset('img/novel/' . $novel->cover) }}" class="thumb" alt="...">
                 <div class="card-body d-flex flex-column pb-3">
-                    <a href="/novel/{{ $data->slug }}">
-                        <p style="color: #012970; font-size: 13px;" class="fw-semibold mt-3">{{ strip_tags(Str::limit($data->judul, 16)) }}</p>
+                    <a href="/novel/{{ $novel->slug }}">
+                        <p style="color: #012970; font-size: 13px;" class="fw-semibold mt-3">{{ strip_tags(Str::limit($novel->judul, 16)) }}</p>
                     </a>
                     <div class="mt-auto d-flex align-items-end justify-content-between">
-                        <small style="font-size: 12px;">{{ $data->created_at->diffForHumans() }}</small>
+                        <small style="font-size: 12px;">{{ $novel->created_at->diffForHumans() }}</small>
                     </div>
                 </div>
             </div>
@@ -38,5 +38,6 @@
     <p class="text-center mt-5">Novel tidak ada</p>
 @endif
 
+{{ $novels->links() }}
 
 @endsection

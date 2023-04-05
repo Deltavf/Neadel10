@@ -10,7 +10,7 @@ class NovelController extends Controller
 {
     public function index() {
         return view('novel.index', [
-            'datas' => Novel::latest()->get()
+            'novels' => Novel::latest()->paginate(12)
         ]);
     }
 
