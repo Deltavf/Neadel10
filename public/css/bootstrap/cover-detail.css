@@ -1,0 +1,39 @@
+.thumb {
+    height: 435px;
+    width: 100%;
+    object-fit: cover; 
+}
+
+@media only screen and (max-width: 1399px) {
+    .thumb {
+        height: 370px;
+    }
+}
+
+@media only screen and (max-width: 1199px) {
+    .thumb {
+        height: 310px;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .thumb {
+        height: 230px;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+    .thumb {
+        height: 740px;
+    }
+}
+
+@media only screen and (max-width: 500px) {
+    .thumb {
+        height: 135vw;
+    }
+
+    .title-volume {
+        font-size: 20px;
+    }
+}

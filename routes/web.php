@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NovelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Rute Novel
+Route::get('/', [NovelController::class, 'index']);
+Route::get('/novel/{novel:slug}', [NovelController::class, 'detail']);
+Route::get('/novel/{novel:slug}/{volume:slug}', [NovelController::class, 'volume']);
