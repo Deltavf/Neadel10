@@ -126,6 +126,10 @@ class DashboardNovelController extends Controller
             'synopsis' => 'required',
         ];
 
+        if($request->title != $novel->title) {
+            $rules['title'] = ['required', new UniqueTitle(['novel', $novel->user_id])];
+        }
+
         if($request->hasFile('cover')) {
             $rules['cover'] = 'required|image';    
         }
