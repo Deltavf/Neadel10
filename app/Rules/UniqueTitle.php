@@ -24,9 +24,16 @@ class UniqueTitle implements ValidationRule
 
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        $volume = Volume::where('novel_id', $this->max)->where('judul', $value)->get();
-        if(count($volume) != 0) {
-            $fail('The :attribute has already been taken.');
+        if($this->max[0] == 'novel') {
+            $novel = Novel::where('user_id', $this->max[1])->where('judul', $value)->get();
+            if(count($novel) != 0) {
+                $fail('The :attribute has already been taken.');
+            }
+        } else if($this->max[0] == 'volume') { 
+            $volume = Volume::where('novel_id', $this->max[1])->where('judul', $value)->get();
+            if(count($volume) != 0) {
+                $fail('The :attribute has already been taken.');
+            }
         }
     }
 }

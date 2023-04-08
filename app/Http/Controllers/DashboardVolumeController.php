@@ -42,9 +42,10 @@ class DashboardVolumeController extends Controller
     public function store(Novel $novel, Request $request)
     {
         $validatedData = $request->validate([
-            'judul' => ['required', new UniqueTitle($novel->id)],
+            'judul' => ['required', new UniqueTitle(['volume', $novel->id])],
             'story' => 'required'
         ]);
+        
 
         $validatedData['slug'] = SlugService::createSlug(Volume::class, 'slug', $validatedData['judul'], ['unique' => false]);
         $validatedData['novel_id'] = $novel->id;
@@ -80,7 +81,7 @@ class DashboardVolumeController extends Controller
     {
         $rules = ['story' => 'required'];
         if($request->judul != $volume->judul) {
-            $rules['judul'] = ['required', new UniqueTitle($novel->id)];
+            $rules['judul'] = ['required', new UniqueTitle(['volume', $novel->id])];
         } else {
             $rules['judul'] = 'required';
         }

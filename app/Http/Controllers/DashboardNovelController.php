@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\File;
 use App\Models\Genre;
 use App\Models\Novel;
 use App\Models\GenreNovel;
+use App\Rules\UniqueTitle;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 use Cviebrock\EloquentSluggable\Services\SlugService;
@@ -49,7 +50,7 @@ class DashboardNovelController extends Controller
     {
         // Memvalidasi data request
         $validatedData = $request->validate([
-            'judul' => 'required',
+            'judul' => ['required', new UniqueTitle(['novel', auth()->user()->id])],
             'status' => 'required',
             'genre' => 'required',
             'cover' => 'required|image',
@@ -122,7 +123,7 @@ class DashboardNovelController extends Controller
         $databaseGenres = collect($databaseGenres)->sort()->values()->all();
 
         $rules = [
-            'judul' => 'required',
+            'judul' => ['required', new UniqueTitle(['novel', $novel->user_id])],
             'status' => 'required',
             'genre' => 'required',
             'sinopsis' => 'required',
