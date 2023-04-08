@@ -27,14 +27,14 @@ class DatabaseSeeder extends Seeder
 
         User::create([
             'username' => 'Delta',
-            'password' => Hash::make('123'),
+            'password' => Hash::make('12345678'),
             'email' => 'delta@gmail.com',
             'role' => 'admin',
         ]);
 
         User::create([
             'username' => 'Daus',
-            'password' => Hash::make('123'),
+            'password' => Hash::make('12345678'),
             'email' => 'daus@gmail.com',
             'role' => 'uploader',
         ]);
@@ -49,7 +49,7 @@ class DatabaseSeeder extends Seeder
         ]);
         
         Novel::create([
-            'user_id' => 2,
+            'user_id' => 1,
             'judul' => 'Seirei Gensouki LN',
             'slug' => 'seirei=gensouki-ln',
             'sinopsis' => '<p>Amakawa Haruto meninggal sebelum dia berkesempatan untuk bersatu kembali dengan teman masa kecilnya yang menghilang lima tahun lalu. Rio, seorang bocah lelaki yang tinggal di daerah kumuh mencari balas dendam untuk ibunya yang dibunuh dengan darah dingin di depannya ketika dia baru berusia lima tahun.</p><p>Ada bumi yang banyak diketahui dan ada dunia alternatif. Dua orang, masing-masing dengan latar belakang dan nilai-nilai mereka sendiri. Untuk alasan yang aneh, ingatan dan kepribadian Haruto, orang yang seharusnya mati bangkit kembali di tubuh Rio. Karena keduanya bingung atas ingatan dan kepribadian mereka yang menyatu bersama, Rio (Haruto) memutuskan untuk hidup di dunia baru ini.</p><p>Bersamaan dengan ingatan Haruto, Rio membangkitkan kekuatan yang tidak dikenal tetapi istimewa. Jika dia menggunakannya, sepertinya dia bisa hidup lebih baik, tapi sebelum itu, Rio mengalami penculikan yang mengakibatkan melibatkan dua putri Kerajaan Bertam.</p><p>Setelah menyelamatkan para putri, Rio diberikan beasiswa untuk menghadiri Royal Academy, sebuah sekolah untuk orang kaya dan berkuasa. Latar belakangnya adalah anak yatim miskin yang pernah tinggal di daerah kumuh, sekolah yang penuh dengan bangsawan agak tempat yang menjijikkan untuk tinggal di.</p>',
