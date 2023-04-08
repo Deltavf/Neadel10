@@ -14,11 +14,10 @@ return new class extends Migration
         Schema::create('novels', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('judul');
+            $table->string('title');
             $table->string('slug')->unique();
             $table->enum('status', ['Ongoing', 'End']);
-            $table->text('sinopsis');
-            $table->date('published_at')->nullable();
+            $table->text('synopsis');
             $table->text('cover');
             $table->timestamps();
         });

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('novel_id');
             $table->foreign('novel_id')->references('id')->on('novels')->onDelete('cascade');
-            $table->string('judul');
+            $table->string('title');
             $table->string('slug');
             $table->text('story');
             $table->timestamps();
