@@ -25,6 +25,11 @@ class Novel extends Model
         return $this->hasMany(Volume::class);
     }
 
+    // Agar mengubah route resource yang berdasarkan id menjadi berdasarkan slug
+    public function getRouteKeyName() {
+        return 'slug';
+    }
+
     // Untuk membuat slug dari field judul
     public function sluggable(): array {
         return [
