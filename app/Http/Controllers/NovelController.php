@@ -14,7 +14,7 @@ class NovelController extends Controller
             $novels->where('title', 'like', '%' . request('search') . '%');
         }
         return view('novel.index', [
-            'novels' => $novels->paginate(12)
+            'novels' => $novels->paginate(24)
         ]);
     }
 
