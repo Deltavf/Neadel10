@@ -45,6 +45,7 @@
       <h5 class="mb-3">Sinopsis</h5>
       <div class="mb-2">{!! $novel->synopsis !!}</div>
       <span>
+        <button class="btn btn-outline-success btn-sm" id="bookmark" value="21" type="button">Bookmark</button>
         <a href="/" class="btn btn-outline-primary btn-sm">Home</a>
       </span>
     </div>
@@ -71,4 +72,25 @@
     </div>
   </div>
 </div>
+@endsection
+@section('js')
+<script>
+  const nama = {!! json_encode($novel->title) !!}
+  const slug = {!! json_encode($novel->slug) !!}
+  const gambar = {!! json_encode($novel->cover) !!}
+  const data = [nama, slug, gambar]
+  const bookmark = document.getElementById('bookmark');
+  if(localStorage.getItem('bookmark-' + slug)) {
+      bookmark.innerHTML = 'Bookmarked';
+  } 
+  bookmark.addEventListener("click", function() {
+      if(localStorage.getItem('bookmark-' + slug)) {
+          bookmark.innerHTML = 'Bookmark';
+          localStorage.removeItem('bookmark-' + slug)
+      } else {
+          bookmark.innerHTML = 'Bookmarked';
+          localStorage.setItem('bookmark-' + slug , JSON.stringify(data))
+      }
+  })
+</script>
 @endsection

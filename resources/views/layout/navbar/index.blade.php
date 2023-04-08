@@ -9,6 +9,8 @@
     Home
     @elseif(Request::is('novel*'))
     {{ $novel->judul }}
+    @elseif(Request::is('bookmark*'))
+    Bookmark
     @endif
   </title>
   <meta content="" name="description">
@@ -44,11 +46,14 @@
             <a class="nav-link @if(Request::is('/') || Request::is('novel*')) active @endif" aria-current="page"
               href="/">Home</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link @if(Request::is('/bookmark') || Request::is('bookmark*')) active @endif" aria-current="page"
+              href="/bookmark">Bookmark</a>
+          </li>
         </ul>
       </div>
       <nav class="header-nav ms-auto">
         <ul class="navbar-nav">
-
           <li class="nav-item">
             @if(auth()->guest())
             <a class="nav-link active" href="/login">Login</a>
@@ -77,6 +82,7 @@
   <script src="{{ asset('vendor/bootstrap/php-email-form/validate.js') }}"></script>
   <!-- Template Main JS File -->
   <script src="{{ asset('js/bootstrap/main.js') }}"></script>
+  @yield('js')
 </body>
 
 </html>

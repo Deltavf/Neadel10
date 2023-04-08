@@ -24,6 +24,7 @@ use App\Http\Controllers\DashboardVolumeController;
 Route::get('/', [NovelController::class, 'index']);
 Route::get('/novel/{novel:slug}', [NovelController::class, 'detail']);
 Route::get('/novel/{novel:slug}/{volume:slug}', [NovelController::class, 'volume']);
+Route::get('/bookmark', [NovelController::class, 'bookmark']);
 
 // Rute Register
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');

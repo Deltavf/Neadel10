@@ -32,4 +32,8 @@ class NovelController extends Controller
             'previous' => Volume::where('novel_id', $novel->id)->where('id', '<', $volume->id)->orderBy('id', 'desc')->first()
         ]);
     }
+
+    public function bookmark() {
+        return view('novel.bookmark');
+    }
 }
