@@ -17,7 +17,7 @@ class LoginController extends Controller
             'password' => 'required|min:8'
         ]);
 
-        if(Auth::attempt($credentials)) {
+        if(Auth::attempt($credentials, $request->input('remember'))) {
             return redirect('/dashboard/novel');
         }
 
