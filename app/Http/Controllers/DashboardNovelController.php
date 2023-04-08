@@ -66,9 +66,7 @@ class DashboardNovelController extends Controller
             $fileName = $validatedData['slug'] . uniqid() . '.webp';
 
             // Mengubah ekstensi gambar menjadi .webp dan mengkompres size gambar menjadi 500px
-            $compressedImage = Image::make($request->file('cover'))->resize(null, 500, function ($constraint) {
-                $constraint->aspectRatio();
-            })->crop(350, 500);
+            $compressedImage = Image::make($request->file('cover'))->fit(450, 600);
 
             // Mengambil path folder img di public
             $imgPath = public_path('/img');
@@ -123,7 +121,6 @@ class DashboardNovelController extends Controller
         $databaseGenres = collect($databaseGenres)->sort()->values()->all();
 
         $rules = [
-            'title' => ['required', new UniqueTitle(['novel', $novel->user_id])],
             'status' => 'required',
             'genre' => 'required',
             'synopsis' => 'required',
@@ -145,9 +142,7 @@ class DashboardNovelController extends Controller
             if($request->file('cover')->isValid()) {
                 File::delete('img/novel/' . $novel->cover);
                 $fileName = $validatedData['slug'] . uniqid() . '.webp';
-                $compressedImage = Image::make($request->file('cover'))->resize(null, 500, function ($constraint) {
-                    $constraint->aspectRatio();
-                })->crop(350, 500);
+                $compressedImage = Image::make($request->file('cover'))->fit(450, 600);
                 $imgPath = public_path('/img');
                 $compressedImage->save($imgPath . '/novel/' . $fileName);
                 $validatedData['cover'] = $fileName;

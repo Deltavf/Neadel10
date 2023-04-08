@@ -90,7 +90,7 @@ class DatabaseSeeder extends Seeder
             'slug' => 'arifureta-shokugyou-de-sekai-saikyou-ln',
             'synopsis' => '<p>Hajime Naguno, seorang remaja berusia 17 tahun adalah seorang otaku biasa. Akan tetapi, hidupnya simpelnya yang penuh begadang hingga menginap di sekolah tiba-tiba menjadi jungkir balik ketika ia, bersama dengan teman-teman sekelasnya, ditarik ke dunia fantasi!</p><p>Mereka diperlakukan seperti seorang pahlawan dan diberi tugas untuk menyelamatkan umat manusia dari bahaya kepunahan.</p><p>Tapi, apa yang membuat impian idaman seorang otaku menjadi sebuah mimpi buruk bagi Hajime? Sementara teman-temannya mendapatkan job class dengan kekuatan dewa, job yang Hajime dapatkan, Synergist, hanya memiliki 1 skill transmutasi. Karena diejek dan dibully teman-temannya, ia pun merasa putus asa.</p><p>Apakah ia akan mampu bertahan di dalam dunia yang penuh monster dan iblis hanya dengan kekuatan setara tukang besi?</p>',
             'status' => 'Ongoing',
-            'cover' => 'arifureta-shokugyou-de-sekai-saikyou-ln.jpg',
+            'cover' => 'arifureta-shokugyou-de-sekai-saikyou-ln6431718fa854f.webp',
         ]);
 
         Genre::create([
