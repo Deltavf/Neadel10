@@ -45,9 +45,9 @@
                             <form action="/dashboard/novel/{{ $novel->slug }}/volume" method="post">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="judul" class="form-control-label">Judul</label>
-                                    <input type="text" name="judul" id="judul" value="{{ old('judul') }}" class="form-control" placeholder="Volume title" required>
-                                    @error('judul')<small class="text-danger">{{ $message }}</small>@enderror
+                                    <label for="title" class="form-control-label">Title</label>
+                                    <input type="text" name="title" id="title" value="{{ old('title') }}" class="form-control" placeholder="Volume title" required>
+                                    @error('title')<small class="text-danger">{{ $message }}</small>@enderror
                                     @if(session()->has('status'))<small class="text-danger">{{ session('status') }}</small>@endif
                                 </div>
                                 <div class="form-group">

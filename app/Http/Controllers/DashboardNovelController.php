@@ -19,13 +19,13 @@ class DashboardNovelController extends Controller
     public function index()
     {
         if(auth()->user()->role == 'admin') {
-            $novels = Novel::join('users', 'novels.user_id', '=', 'users.id')->select('novels.judul', 'novels.slug', 'novels.cover', 'users.username')->withCount('volumes')->orderBy('novels.id', 'desc');
+            $novels = Novel::join('users', 'novels.user_id', '=', 'users.id')->select('novels.title', 'novels.slug', 'novels.cover', 'users.username')->withCount('volumes')->orderBy('novels.id', 'desc');
         } else {
-            $novels = Novel::latest()->select('judul', 'slug', 'cover')->withCount('volumes')->where('user_id', auth()->user()->id);
+            $novels = Novel::latest()->select('title', 'slug', 'cover')->withCount('volumes')->where('user_id', auth()->user()->id);
         }
 
         if(request('search')) {
-            $novels->where('novels.judul', 'like', '%' . request('search') . '%');
+            $novels->where('novels.title', 'like', '%' . request('search') . '%');
         }
 
         return view('dashboard-novel.index', [
@@ -50,15 +50,15 @@ class DashboardNovelController extends Controller
     {
         // Memvalidasi data request
         $validatedData = $request->validate([
-            'judul' => ['required', new UniqueTitle(['novel', auth()->user()->id])],
+            'title' => ['required', new UniqueTitle(['novel', auth()->user()->id])],
             'status' => 'required',
             'genre' => 'required',
             'cover' => 'required|image',
-            'sinopsis' => 'required',
+            'synopsis' => 'required',
         ]);
 
         // Membuat slug menggunakan plugin sluggable
-        $validatedData['slug'] = SlugService::createSlug(Novel::class, 'slug', $validatedData['judul']);
+        $validatedData['slug'] = SlugService::createSlug(Novel::class, 'slug', $validatedData['title']);
 
         if ($request->hasFile('cover') && $request->file('cover')->isValid()) {
 
@@ -123,10 +123,10 @@ class DashboardNovelController extends Controller
         $databaseGenres = collect($databaseGenres)->sort()->values()->all();
 
         $rules = [
-            'judul' => ['required', new UniqueTitle(['novel', $novel->user_id])],
+            'title' => ['required', new UniqueTitle(['novel', $novel->user_id])],
             'status' => 'required',
             'genre' => 'required',
-            'sinopsis' => 'required',
+            'synopsis' => 'required',
         ];
 
         if($request->hasFile('cover')) {
@@ -135,8 +135,8 @@ class DashboardNovelController extends Controller
         
         $validatedData = $request->validate($rules);
         
-        if($novel->judul != $request->judul) {
-            $validatedData['slug'] = SlugService::createSlug(Novel::class, 'slug', $validatedData['judul']);
+        if($novel->title != $request->title) {
+            $validatedData['slug'] = SlugService::createSlug(Novel::class, 'slug', $validatedData['title']);
         } else {
             $validatedData['slug'] = $novel->slug;
         }

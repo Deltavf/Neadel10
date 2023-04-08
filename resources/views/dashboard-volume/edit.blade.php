@@ -47,9 +47,9 @@
                                 @method('put')
                                 <input type="hidden" name="slug" value="{{ $volume->slug }}">
                                 <div class="form-group">
-                                    <label for="judul" class="form-control-label">Title</label>
-                                    <input type="text" name="judul" id="judul" value="{{ old('judul', $volume->judul) }}" class="form-control" placeholder="Volume title" required>
-                                    @error('judul')<small class="text-danger">{{ $message }}</small>@enderror
+                                    <label for="title" class="form-control-label">Title</label>
+                                    <input type="text" name="title" id="title" value="{{ old('title', $volume->title) }}" class="form-control" placeholder="Volume title" required>
+                                    @error('title')<small class="text-danger">{{ $message }}</small>@enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="story" class="form-control-label">Story</label>

@@ -15,9 +15,9 @@ class DashboardVolumeController extends Controller
      */
     public function index(Novel $novel)
     {
-        $volume = Volume::latest()->where('novel_id', $novel->id)->select('judul', 'slug');
+        $volume = Volume::latest()->where('novel_id', $novel->id)->select('title', 'slug');
         if(request('search')) {
-            $volume->where('judul', 'like', '%' . request('search') . '%');
+            $volume->where('title', 'like', '%' . request('search') . '%');
         }
 
         return view('dashboard-volume.index', [
@@ -42,12 +42,12 @@ class DashboardVolumeController extends Controller
     public function store(Novel $novel, Request $request)
     {
         $validatedData = $request->validate([
-            'judul' => ['required', new UniqueTitle(['volume', $novel->id])],
+            'title' => ['required', new UniqueTitle(['volume', $novel->id])],
             'story' => 'required'
         ]);
         
 
-        $validatedData['slug'] = SlugService::createSlug(Volume::class, 'slug', $validatedData['judul'], ['unique' => false]);
+        $validatedData['slug'] = SlugService::createSlug(Volume::class, 'slug', $validatedData['title'], ['unique' => false]);
         $validatedData['novel_id'] = $novel->id;
 
         Volume::create($validatedData);
@@ -80,15 +80,15 @@ class DashboardVolumeController extends Controller
     public function update(Novel $novel, Volume $volume, Request $request)
     {
         $rules = ['story' => 'required'];
-        if($request->judul != $volume->judul) {
-            $rules['judul'] = ['required', new UniqueTitle(['volume', $novel->id])];
+        if($request->title != $volume->title) {
+            $rules['title'] = ['required', new UniqueTitle(['volume', $novel->id])];
         } else {
-            $rules['judul'] = 'required';
+            $rules['title'] = 'required';
         }
 
         $validatedData = $request->validate($rules);
 
-        $validatedData['slug'] = SlugService::createSlug(Volume::class, 'slug', $validatedData['judul'], ['unique' => false]);
+        $validatedData['slug'] = SlugService::createSlug(Volume::class, 'slug', $validatedData['title'], ['unique' => false]);
 
         Volume::where('id', $volume->id)->update($validatedData);
 

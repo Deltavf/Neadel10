@@ -45,9 +45,9 @@
                             <form action="/dashboard/novel" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <label for="judul" class="form-control-label">Title</label>
-                                    <input type="text" name="judul" id="judul" value="{{ old('judul') }}" class="form-control" placeholder="Novel title" required>
-                                    @error('judul')<small class="text-danger">{{ $message }}</small>@enderror
+                                    <label for="title" class="form-control-label">Title</label>
+                                    <input type="text" name="title" id="title" value="{{ old('title') }}" class="form-control" placeholder="Novel title" required>
+                                    @error('title')<small class="text-danger">{{ $message }}</small>@enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="status" class="form-control-label">Status</label>
@@ -79,10 +79,10 @@
                                     @if(session()->has('status'))<small class="text-danger">{{ session('status') }}</small>@endif
                                 </div>
                                 <div class="form-group">
-                                    <label for="sinopsis" class="form-control-label">Synopsis</label>
-                                    <input id="sinopsis" type="hidden" name="sinopsis" value="{{ old('sinopsis') }}">
-                                    <trix-editor input="sinopsis"></trix-editor>
-                                    @error('sinopsis')<small class="text-danger">{{ $message }}</small>@enderror
+                                    <label for="synopsis" class="form-control-label">Synopsis</label>
+                                    <input id="synopsis" type="hidden" name="synopsis" value="{{ old('synopsis') }}">
+                                    <trix-editor input="synopsis"></trix-editor>
+                                    @error('synopsis')<small class="text-danger">{{ $message }}</small>@enderror
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary btn-sm">Create</button>

@@ -51,7 +51,8 @@
               <thead>
                 <tr>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Judul</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Title</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Date</th>
                   <th></th>
                 </tr>
               </thead>
@@ -62,7 +63,10 @@
                       <h6 class="ms-3 text-sm">{{ $loop->iteration }}</h6>  
                     </td>
                     <td>
-                        <p class="text-sm font-weight-bold mb-0" >{{ $volume->judul }}</p>
+                        <p class="text-sm font-weight-bold mb-0" >{{ $volume->title }}</p>
+                    </td>
+                    <td>
+                        <p class="text-sm font-weight-bold mb-0" >{{ \Carbon\Carbon::parse($volume->created_at)->isoFormat('D MMMM Y') }}</p>
                     </td>
                     <td class="align-middle">
                       <button class="btn btn-link text-secondary mb-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">

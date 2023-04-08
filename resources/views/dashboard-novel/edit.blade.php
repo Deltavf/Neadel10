@@ -47,9 +47,9 @@
                                 @method('put')
                                 <input type="hidden" name="slug" value="{{ $novel->slug }}">
                                 <div class="form-group">
-                                    <label for="judul" class="form-control-label">Title</label>
-                                    <input type="text" name="judul" id="judul" value="{{ old('judul', $novel->judul) }}" class="form-control" placeholder="Novel title" required>
-                                    @error('judul')<small class="text-danger">{{ $message }}</small>@enderror
+                                    <label for="title" class="form-control-label">Title</label>
+                                    <input type="text" name="title" id="title" value="{{ old('title', $novel->title) }}" class="form-control" placeholder="Novel title" required>
+                                    @error('title')<small class="text-danger">{{ $message }}</small>@enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="status" class="form-control-label">Status</label>
@@ -76,16 +76,16 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="cover" class="form-control-label">Cover</label>
-                                    <img src="{{ asset('img/novel/' . $novel->cover) }}" alt="{{ $novel->judul }}" class="d-block mb-2" width="150px" style="object-fit: cover; aspect-ratio: 3 / 4;">
+                                    <img src="{{ asset('img/novel/' . $novel->cover) }}" alt="{{ $novel->title }}" class="d-block mb-2" width="150px" style="object-fit: cover; aspect-ratio: 3 / 4;">
                                     <input type="file" name="cover" id="cover" class="form-control">
                                     @error('cover')<small class="text-danger">{{ $message }}</small>@enderror
                                     @if(session()->has('status'))<small class="text-danger">{{ session('status') }}</small>@endif
                                 </div>
                                 <div class="form-group">
-                                    <label for="sinopsis" class="form-control-label">Synopsis</label>
-                                    <input id="sinopsis" type="hidden" name="sinopsis" value="{{  old('sinopsis', $novel->sinopsis)  }}">
-                                    <trix-editor input="sinopsis"></trix-editor>
-                                    @error('sinopsis')<small class="text-danger">{{ $message }}</small>@enderror
+                                    <label for="synopsis" class="form-control-label">Synopsis</label>
+                                    <input id="synopsis" type="hidden" name="synopsis" value="{{  old('synopsis', $novel->synopsis)  }}">
+                                    <trix-editor input="synopsis"></trix-editor>
+                                    @error('synopsis')<small class="text-danger">{{ $message }}</small>@enderror
                                 </div>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-primary btn-sm">Edit</button>

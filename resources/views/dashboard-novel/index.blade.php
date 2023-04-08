@@ -68,7 +68,7 @@
                       <img src="{{ asset('img/novel/' . $novel->cover) }}" width="90vw">
                     </td>
                     <td>
-                        <p class="text-sm font-weight-bold mb-0" >{{ $novel->judul }}</p>
+                        <p class="text-sm font-weight-bold mb-0" >{{ $novel->title }}</p>
                     </td>
                     <td>
                       <span class="text-xs font-weight-bold">{{ $novel->volumes_count }}</span>
