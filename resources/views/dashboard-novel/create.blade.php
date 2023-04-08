@@ -81,7 +81,9 @@
                 </div>
                 <div class="form-group">
                   <label for="cover" class="form-control-label">Cover</label>
-                  <input type="file" name="cover" id="cover" class="form-control" required>
+                  <div id="myImage"></div>
+                  <img class="img-preview mb-3" width="150px" style="aspect-ratio: 3/4; object-fit: cover; display: none;">
+                  <input type="file" name="cover" id="cover" accept=".jpg,.jpeg,.png,.bmp,.gif,.svg,.webp" onchange="previewImage()" class="form-control" required>
                   @error('cover')<small class="text-danger">{{ $message }}</small>@enderror
                   @if(session()->has('status'))<small class="text-danger">{{ session('status')
                     }}</small>@endif
@@ -94,7 +96,7 @@
                 </div>
                 <div class="form-group">
                   <button type="submit" class="btn btn-primary btn-sm">Create</button>
-                  <button type="reset" class="btn btn-secondary btn-sm">Reset</button>
+                  <button type="reset" class="btn btn-secondary btn-sm" onclick="resetClick()">Reset</button>
                 </div>
               </form>
             </div>
@@ -106,9 +108,5 @@
 </div>
 @endsection
 @section('js')
-<script>
-  document.addEventListener('trix-file-accept', function(e) {
-        e,preventDefault()
-    })
-</script>
+<script src="{{ asset('js/custom/trix-render.js') }}"></script>
 @endsection

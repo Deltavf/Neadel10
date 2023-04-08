@@ -80,9 +80,8 @@
                 </div>
                 <div class="form-group">
                   <label for="cover" class="form-control-label">Cover</label>
-                  <img src="{{ asset('img/novel/' . $novel->cover) }}" alt="{{ $novel->title }}" class="d-block mb-2"
-                    width="150px" style="object-fit: cover; aspect-ratio: 3 / 4;">
-                  <input type="file" name="cover" id="cover" class="form-control">
+                  <img src="{{ asset('img/novel/' . $novel->cover) }}"  class="d-block mb-2 img-preview" width="150px" style="object-fit: cover; aspect-ratio: 3 / 4;">
+                  <input type="file" name="cover" id="cover" accept=".jpg,.jpeg,.png,.bmp,.gif,.svg,.webp" class="form-control" onchange="previewImage('{{ $novel->cover }}')">
                   @error('cover')<small class="text-danger">{{ $message }}</small>@enderror
                   @if(session()->has('status'))<small class="text-danger">{{ session('status')
                     }}</small>@endif
@@ -95,7 +94,7 @@
                 </div>
                 <div class="form-group">
                   <button type="submit" class="btn btn-primary btn-sm">Edit</button>
-                  <button type="reset" class="btn btn-secondary btn-sm">Reset</button>
+                  <button type="reset" class="btn btn-secondary btn-sm" onclick="resetClick('{{ $novel->cover }}')">Reset</button>
                 </div>
               </form>
             </div>
@@ -106,10 +105,7 @@
   </div>
 </div>
 @endsection
+
 @section('js')
-<script>
-  document.addEventListener('trix-file-accept', function(e) {
-        e,preventDefault()
-    })
-</script>
+<script src="{{ asset('js/custom/trix-render.js') }}"></script>
 @endsection
