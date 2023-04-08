@@ -36,7 +36,8 @@
                     @csrf
                     <label for="username">Username</label>
                     <div class="mb-3">
-                      <input type="text" class="form-control" id="username" name="username" value="{{ old('username') }}" placeholder="Username">
+                      <input type="text" class="form-control" id="username" name="username"
+                        value="{{ old('username') }}" placeholder="Username">
                       @error('username')<small class="text-danger">{{ $message }}</small>@enderror
                     </div>
                     <label for="password">Password</label>
@@ -44,7 +45,7 @@
                       <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                       @error('password')<small class="text-danger">{{ $message }}</small>@enderror
                       @if(session()->has('status'))
-                        <small class="text-danger">Username atau password anda salah.</small>
+                      <small class="text-danger">Username atau password anda salah.</small>
                       @endif
                     </div>
                     {{-- <div class="form-check form-switch">
@@ -66,7 +67,8 @@
             </div>
             <div class="col-md-6">
               <div class="oblique position-absolute top-0 h-100 d-md-block d-none me-n8">
-                <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6" style="background-image:url('{{ asset('img/soft-ui/curved-images/curved6.jpg')}}"></div>
+                <div class="oblique-image bg-cover position-absolute fixed-top ms-auto h-100 z-index-0 ms-n6"
+                  style="background-image:url('{{ asset('img/soft-ui/curved-images/curved6.jpg')}}"></div>
               </div>
             </div>
           </div>

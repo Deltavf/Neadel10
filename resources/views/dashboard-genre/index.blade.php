@@ -13,9 +13,10 @@
         <form action="/dashboard/genre">
           <div class="input-group">
             <button type="submit" class="input-group-text text-body">
-            <i class="fas fa-search" aria-hidden="true"></i>
+              <i class="fas fa-search" aria-hidden="true"></i>
             </button>
-            <input type="text" class="form-control ps-2" placeholder="Search genre" name="search" value="{{ request('search') }}">
+            <input type="text" class="form-control ps-2" placeholder="Search genre" name="search"
+              value="{{ request('search') }}">
           </div>
         </form>
       </div>
@@ -56,34 +57,37 @@
               </thead>
               <tbody>
                 @foreach($genres as $genre)
-                  <tr>
-                    <td>
-                      <h6 class="ms-3 text-sm">{{ $loop->iteration }}</h6>  
-                    </td>
-                    <td>
-                        <p class="text-sm font-weight-bold mb-0" >{{ $genre->name }}</p>
-                    </td>
-                    <td>
-                        <p class="text-sm font-weight-bold mb-0" >{{ $genre->created_at->diffForHumans() }}</p>
-                    </td>
-                    <td class="align-middle">
-                      <button class="btn btn-link text-secondary mb-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa fa-ellipsis-v text-xs"></i>
-                      </button>
-                      <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                        <li>
-                          <a class="dropdown-item border-radius-md" href="/dashboard/genre/{{ $genre->slug }}/edit">Edit</a>
-                        </li>
-                        <li>
-                          <form action="/dashboard/genre/{{ $genre->slug }}" method="post">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="dropdown-item border-radius-md">Delete</button>
-                          </form>
-                        </li>
-                      </ul>
-                    </td>
-                  </tr>
+                <tr>
+                  <td>
+                    <h6 class="ms-3 text-sm">{{ $loop->iteration }}</h6>
+                  </td>
+                  <td>
+                    <p class="text-sm font-weight-bold mb-0">{{ $genre->name }}</p>
+                  </td>
+                  <td>
+                    <p class="text-sm font-weight-bold mb-0">{{ $genre->created_at->diffForHumans() }}</p>
+                  </td>
+                  <td class="align-middle">
+                    <button class="btn btn-link text-secondary mb-0" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      <i class="fa fa-ellipsis-v text-xs"></i>
+                    </button>
+                    <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
+                      aria-labelledby="dropdownMenuButton">
+                      <li>
+                        <a class="dropdown-item border-radius-md"
+                          href="/dashboard/genre/{{ $genre->slug }}/edit">Edit</a>
+                      </li>
+                      <li>
+                        <form action="/dashboard/genre/{{ $genre->slug }}" method="post">
+                          @csrf
+                          @method('delete')
+                          <button type="submit" class="dropdown-item border-radius-md">Delete</button>
+                        </form>
+                      </li>
+                    </ul>
+                  </td>
+                </tr>
                 @endforeach
               </tbody>
             </table>

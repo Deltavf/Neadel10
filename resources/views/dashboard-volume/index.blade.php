@@ -1,6 +1,5 @@
 @extends('layout.dashboard.index')
 @section('isi')
-<!-- Navbar -->
 <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl" id="navbarBlur" navbar-scroll="true">
   <div class="container-fluid py-1 px-3">
     <nav aria-label="breadcrumb">
@@ -14,9 +13,10 @@
         <form action="/dashboard/novel/{{ $novel->slug }}/volume">
           <div class="input-group">
             <button type="submit" class="input-group-text text-body">
-            <i class="fas fa-search" aria-hidden="true"></i>
+              <i class="fas fa-search" aria-hidden="true"></i>
             </button>
-            <input type="text" class="form-control ps-2" placeholder="Search Volume" name="search" value="{{ request('search') }}">
+            <input type="text" class="form-control ps-2" placeholder="Search Volume" name="search"
+              value="{{ request('search') }}">
           </div>
         </form>
       </div>
@@ -34,13 +34,13 @@
     </div>
   </div>
 </nav>
-<!-- End Navbar -->
 <div class="container-fluid py-4">
   <div class="row">
     <div class="col-12">
       <div class="card mb-4">
         <div class="card-header pb-0">
-          <h6 class="d-inline">Volume | </h6><a href="/dashboard/novel/{{ $novel->slug }}/volume/create" class="text-sm text-dark">Create Volume</a>
+          <h6 class="d-inline">Volume | </h6><a href="/dashboard/novel/{{ $novel->slug }}/volume/create"
+            class="text-sm text-dark">Create Volume</a>
           <div style="float: right;">
             <i class="ni ni-bullet-list-67 mt-2" id="filterButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
           </div>
@@ -58,37 +58,42 @@
               </thead>
               <tbody>
                 @foreach($volumes as $volume)
-                  <tr>
-                    <td>
-                      <h6 class="ms-3 text-sm">{{ $loop->iteration }}</h6>  
-                    </td>
-                    <td>
-                        <p class="text-sm font-weight-bold mb-0" >{{ $volume->title }}</p>
-                    </td>
-                    <td>
-                        <p class="text-sm font-weight-bold mb-0" >{{ \Carbon\Carbon::parse($volume->created_at)->isoFormat('D MMMM Y') }}</p>
-                    </td>
-                    <td class="align-middle">
-                      <button class="btn btn-link text-secondary mb-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa fa-ellipsis-v text-xs"></i>
-                      </button>
-                      <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                        <li>
-                          <a class="dropdown-item border-radius-md" href="/novel/{{ $novel->slug }}/{{ $volume->slug }}">Detail</a>
-                        </li>
-                        <li>
-                          <a class="dropdown-item border-radius-md" href="/dashboard/novel/{{ $novel->slug }}/volume/{{ $volume->slug }}/edit">Edit</a>
-                        </li>
-                        <li>
-                          <form action="/dashboard/novel/{{ $novel->slug }}/volume/{{ $volume->slug }}" method="post">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="dropdown-item border-radius-md">Delete</button>
-                          </form>
-                        </li>
-                      </ul>
-                    </td>
-                  </tr>
+                <tr>
+                  <td>
+                    <h6 class="ms-3 text-sm">{{ $loop->iteration }}</h6>
+                  </td>
+                  <td>
+                    <p class="text-sm font-weight-bold mb-0">{{ $volume->title }}</p>
+                  </td>
+                  <td>
+                    <p class="text-sm font-weight-bold mb-0">{{ \Carbon\Carbon::parse($volume->created_at)->isoFormat('D
+                      MMMM Y') }}</p>
+                  </td>
+                  <td class="align-middle">
+                    <button class="btn btn-link text-secondary mb-0" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      <i class="fa fa-ellipsis-v text-xs"></i>
+                    </button>
+                    <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
+                      aria-labelledby="dropdownMenuButton">
+                      <li>
+                        <a class="dropdown-item border-radius-md"
+                          href="/novel/{{ $novel->slug }}/{{ $volume->slug }}">Detail</a>
+                      </li>
+                      <li>
+                        <a class="dropdown-item border-radius-md"
+                          href="/dashboard/novel/{{ $novel->slug }}/volume/{{ $volume->slug }}/edit">Edit</a>
+                      </li>
+                      <li>
+                        <form action="/dashboard/novel/{{ $novel->slug }}/volume/{{ $volume->slug }}" method="post">
+                          @csrf
+                          @method('delete')
+                          <button type="submit" class="dropdown-item border-radius-md">Delete</button>
+                        </form>
+                      </li>
+                    </ul>
+                  </td>
+                </tr>
                 @endforeach
               </tbody>
             </table>

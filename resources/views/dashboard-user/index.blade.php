@@ -13,9 +13,10 @@
         <form action="/dashboard/user">
           <div class="input-group">
             <button type="submit" class="input-group-text text-body">
-            <i class="fas fa-search" aria-hidden="true"></i>
+              <i class="fas fa-search" aria-hidden="true"></i>
             </button>
-            <input type="text" class="form-control ps-2" placeholder="Search user" name="search" value="{{ request('search') }}">
+            <input type="text" class="form-control ps-2" placeholder="Search user" name="search"
+              value="{{ request('search') }}">
           </div>
         </form>
       </div>
@@ -56,31 +57,34 @@
               </thead>
               <tbody>
                 @foreach($users as $user)
-                  <tr>
-                    <td>
-                      <h6 class="ms-3 text-sm">{{ $loop->iteration }}</h6>  
-                    </td>
-                    <td>
-                        <p class="text-sm font-weight-bold mb-0" >{{ $user->username }}</p>
-                    </td>
-                    <td>
-                        <p class="text-sm font-weight-bold mb-0" >{{ \Carbon\Carbon::parse($user->created_at)->isoFormat('D MMMM Y') }}</p>
-                    </td>
-                    <td class="align-middle">
-                      <button class="btn btn-link text-secondary mb-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                        <i class="fa fa-ellipsis-v text-xs"></i>
-                      </button>
-                      <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
-                        <li>
-                          <form action="/dashboard/user/{{ $user->username }}" method="post">
-                            @csrf
-                            @method('delete')
-                            <button type="submit" class="dropdown-item border-radius-md">Delete</button>
-                          </form>
-                        </li>
-                      </ul>
-                    </td>
-                  </tr>
+                <tr>
+                  <td>
+                    <h6 class="ms-3 text-sm">{{ $loop->iteration }}</h6>
+                  </td>
+                  <td>
+                    <p class="text-sm font-weight-bold mb-0">{{ $user->username }}</p>
+                  </td>
+                  <td>
+                    <p class="text-sm font-weight-bold mb-0">{{ \Carbon\Carbon::parse($user->created_at)->isoFormat('D
+                      MMMM Y') }}</p>
+                  </td>
+                  <td class="align-middle">
+                    <button class="btn btn-link text-secondary mb-0" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                      aria-expanded="false">
+                      <i class="fa fa-ellipsis-v text-xs"></i>
+                    </button>
+                    <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4"
+                      aria-labelledby="dropdownMenuButton">
+                      <li>
+                        <form action="/dashboard/user/{{ $user->username }}" method="post">
+                          @csrf
+                          @method('delete')
+                          <button type="submit" class="dropdown-item border-radius-md">Delete</button>
+                        </form>
+                      </li>
+                    </ul>
+                  </td>
+                </tr>
                 @endforeach
               </tbody>
             </table>

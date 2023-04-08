@@ -155,6 +155,7 @@ class DashboardNovelController extends Controller
                 return redirect('/dashboard/novel/' . $novel->slug . '/edit')->with('status', 'Gambar yang anda masukkan tidak valid');
             }
         } 
+        
         $newGenres = collect($validatedData['genre'])->sort()->values()->all();
         if($newGenres != $databaseGenres) {
             GenreNovel::where('novel_id', $novel->id)->delete();
