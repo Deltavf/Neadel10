@@ -29,6 +29,7 @@
       <div class="card mb-4">
         <div class="card-header pb-0">
           <h6 class="d-inline">Edit Genre</h6>
+          <a href="../" class="ni ni-bold-left mt-2 float-end"></a>
         </div>
         <div class="card-body pb-2">
           <div class="row">
