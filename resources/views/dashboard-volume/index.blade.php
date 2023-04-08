@@ -6,17 +6,17 @@
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb bg-transparent mb-0 pb-0 pt-1 px-0 me-sm-6 me-5">
         <li class="breadcrumb-item text-sm"><a class="opacity-5 text-dark" href="javascript:;">Dashboard</a></li>
-        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Novel</li>
+        <li class="breadcrumb-item text-sm text-dark active" aria-current="page">Volume</li>
       </ol>
     </nav>
     <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
       <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-        <form action="/dashboard/novel">
+        <form action="/dashboard/novel/{{ $novel->slug }}/volume">
           <div class="input-group">
             <button type="submit" class="input-group-text text-body">
             <i class="fas fa-search" aria-hidden="true"></i>
             </button>
-            <input type="text" class="form-control ps-2" placeholder="Search Novel" name="search" value="{{ request('search') }}">
+            <input type="text" class="form-control ps-2" placeholder="Search Volume" name="search" value="{{ request('search') }}">
           </div>
         </form>
       </div>
@@ -41,15 +41,15 @@
     <div class="col-12">
       <div class="card mb-4">
         <div class="card-header pb-0">
-          <h6 class="d-inline">Novel | </h6><a href="/dashboard/novel/create" class="text-sm text-dark">Tambah data</a>
+          <h6 class="d-inline">Volume | </h6><a href="/dashboard/novel/{{ $novel->slug }}/volume/create" class="text-sm text-dark">Tambah data</a>
           <div style="float: right;">
             <i class="ni ni-bullet-list-67 mt-2" id="filterButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
             {{-- <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="filterButton">
               <li>
-                <a class="dropdown-item border-radius-md" href="">Urutkan novel terbaru</a>
+                <a class="dropdown-item border-radius-md" href="">Urutkan volume terbaru</a>
               </li>
               <li>
-                <a class="dropdown-item border-radius-md" href="">Urutkan novel Terlama</a>
+                <a class="dropdown-item border-radius-md" href="">Urutkan volume Terlama</a>
               </li>
             </ul> --}}
           </div>
@@ -60,51 +60,32 @@
               <thead>
                 <tr>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Cover</th>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Judul</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Volume</th>
-                  @if(auth()->user()->role == 'admin')
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Author</th>
-                  @endif
                   <th></th>
                 </tr>
               </thead>
               <tbody>
-                @foreach($novels as $novel)
+                @foreach($volumes as $volume)
                   <tr>
                     <td>
                       <h6 class="ms-3 text-sm">{{ $loop->iteration }}</h6>  
                     </td>
                     <td>
-                      <img src="{{ asset('img/novel/' . $novel->cover) }}" width="90vw">
+                        <p class="text-sm font-weight-bold mb-0" >{{ $volume->judul }}</p>
                     </td>
-                    <td>
-                        <p class="text-sm font-weight-bold mb-0" >{{ $novel->judul }}</p>
-                    </td>
-                    <td>
-                      <span class="text-xs font-weight-bold">{{ $novel->volumes_count }}</span>
-                    </td>
-                    @if(auth()->user()->role == 'admin')
-                    <td>
-                      <span class="text-xs font-weight-bold">{{ $novel->username }}</span>
-                    </td>
-                    @endif
                     <td class="align-middle">
                       <button class="btn btn-link text-secondary mb-0" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-ellipsis-v text-xs"></i>
                       </button>
                       <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
                         <li>
-                          <a class="dropdown-item border-radius-md" href="/dashboard/novel/{{ $novel->slug }}/volume">Add Volume</a>
+                          <a class="dropdown-item border-radius-md" href="/novel/{{ $novel->slug }}/{{ $volume->slug }}">Detail</a>
                         </li>
                         <li>
-                          <a class="dropdown-item border-radius-md" href="/novel/{{ $novel->slug }}">Detail</a>
+                          <a class="dropdown-item border-radius-md" href="/dashboard/novel/{{ $novel->slug }}/volume/{{ $volume->slug }}/edit">Edit</a>
                         </li>
                         <li>
-                          <a class="dropdown-item border-radius-md" href="/dashboard/novel/{{ $novel->slug }}/edit">Edit</a>
-                        </li>
-                        <li>
-                          <form action="/dashboard/novel/{{ $novel->slug }}" method="post">
+                          <form action="/dashboard/novel/{{ $novel->slug }}/volume/{{ $volume->slug }}" method="post">
                             @csrf
                             @method('delete')
                             <button type="submit" class="dropdown-item border-radius-md">Delete</button>
@@ -118,7 +99,7 @@
             </table>
           </div>
           <div style="float: right; margin-right: 20px; margin-top: 10px;">
-            {{ $novels->links() }}
+            {{ $volumes->links() }}
           </div>
         </div>
       </div>

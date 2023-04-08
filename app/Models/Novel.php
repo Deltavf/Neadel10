@@ -10,6 +10,8 @@ class Novel extends Model
 {
     use HasFactory, Sluggable;
 
+    protected $guarded = ['id'];
+
     // Membuat relasi many to many dari model Novel ke model Genre
     public function genres() {
         return $this->belongsToMany(Genre::class);
