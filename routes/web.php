@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NovelController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DashboardNovelController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,3 +29,6 @@ Route::post('/register', [RegisterController::class, 'register'])->middleware('g
 // Rute Login
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
 Route::post('/login', [LoginController::class, 'login'])->middleware('guest');
+
+// Rute Dashboard Novel
+Route::resource('/dashboard/novel', DashboardNovelController::class);
