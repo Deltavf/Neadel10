@@ -5,6 +5,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NovelController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\DashboardNovelController;
+use App\Http\Controllers\DashboardVolumeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,4 +32,5 @@ Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
 Route::post('/login', [LoginController::class, 'login'])->middleware('guest');
 
 // Rute Dashboard Novel
-Route::resource('/dashboard/novel', DashboardNovelController::class);
+Route::resource('/dashboard/novel', DashboardNovelController::class)->middleware('auth');
+Route::resource('/dashboard/novel/{novel:slug}/volume', DashboardVolumeController::class)->middleware('auth');
