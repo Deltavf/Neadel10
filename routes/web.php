@@ -32,6 +32,9 @@ Route::post('/register', [RegisterController::class, 'register'])->middleware('g
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
 Route::post('/login', [LoginController::class, 'login'])->middleware('guest');
 
+// Rute Logout
+Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
+
 // Rute Dashboard Novel
 Route::resource('/dashboard/novel', DashboardNovelController::class)->middleware('auth');
 Route::resource('/dashboard/novel/{novel:slug}/volume', DashboardVolumeController::class)->middleware('auth');
