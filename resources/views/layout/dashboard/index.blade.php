@@ -86,14 +86,14 @@
             <span class="nav-link-text ms-1">Chat</span>
           </a>
         </li> --}}
-        {{-- <li class="nav-item">
-          <a class="nav-link  " href="../pages/sign-up.html">
+        <li class="nav-item">
+          <button class="dropdown-item nav-link">
             <div class="icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-button-power"></i>
             </div>
             <span class="nav-link-text ms-1">Logout</span>
-          </a>
-        </li> --}}
+          </button>
+        </li>
       </ul>
     </div>
   </aside>
