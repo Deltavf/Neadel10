@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Novel extends Model
 {
-    use HasFactory;
+    use HasFactory, Sluggable;
 
     // Membuat relasi many to many dari model Novel ke model Genre
     public function genres() {
@@ -22,5 +23,14 @@ class Novel extends Model
     // Membuat relasi one to many dari model Novel ke model Volume
     public function volumes() {
         return $this->hasMany(Volume::class);
+    }
+
+    // Untuk membuat slug dari field judul
+    public function sluggable(): array {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
     }
 }
