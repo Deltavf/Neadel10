@@ -40,5 +40,5 @@ Route::post('/logout', [LoginController::class, 'logout'])->middleware('auth');
 // Rute Dashboard Novel
 Route::resource('/dashboard/novel', DashboardNovelController::class)->middleware('auth');
 Route::resource('/dashboard/novel/{novel:slug}/volume', DashboardVolumeController::class)->middleware('auth');
-Route::resource('/dashboard/genre', DashboardGenreController::class)->middleware('auth');
-Route::resource('/dashboard/user', DashboardUserController::class)->middleware('auth');
+Route::resource('/dashboard/genre', DashboardGenreController::class)->middleware('admin');
+Route::resource('/dashboard/user', DashboardUserController::class)->middleware('admin');
