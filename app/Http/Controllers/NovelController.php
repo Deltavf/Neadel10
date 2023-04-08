@@ -9,8 +9,12 @@ use Illuminate\Http\Request;
 class NovelController extends Controller
 {
     public function index() {
+        $novels = Novel::latest();
+        if(request('search')) {
+            $novels->where('title', 'like', '%' . request('search') . '%');
+        }
         return view('novel.index', [
-            'novels' => Novel::latest()->paginate(12)
+            'novels' => $novels->paginate(12)
         ]);
     }
 
