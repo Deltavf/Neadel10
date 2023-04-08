@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{{ asset('css/bootstrap/cover-home.css') }}">
 @section('konten')
 
-<h2 class="mb-3">Novel updates @if(isset($nama)) {{ $nama }} @endif</h1> 
+<h2 class="mb-3">Novel Updates @if(isset($nama)) {{ $nama }} @endif</h1> 
 <div class="row">
     <div class="col-md-6">
         <form action="/" method="get">
@@ -24,7 +24,7 @@
                 <img src="{{ asset('img/novel/' . $novel->cover) }}" class="thumb" alt="...">
                 <div class="card-body d-flex flex-column pb-3">
                     <a href="/novel/{{ $novel->slug }}">
-                        <p style="color: #012970; font-size: 13px;" class="fw-semibold mt-3">{{ strip_tags(Str::limit($novel->judul, 16)) }}</p>
+                        <p style="color: #012970; font-size: 13px;" class="fw-semibold mt-3">{{ strip_tags(Str::limit($novel->title, 25)) }}</p>
                     </a>
                     <div class="mt-auto d-flex align-items-end justify-content-between">
                         <small style="font-size: 12px;">{{ $novel->created_at->diffForHumans() }}</small>

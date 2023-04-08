@@ -2,7 +2,7 @@
 @section('konten')
 <div class="row">
     <div class="col-xl-10 mx-auto">
-        <h4 class="mb-4">{{ $novel->judul .  ' ' . $volume->judul }}</h4>      
+        <h4 class="mb-4">{{ $novel->title .  ' ' . $volume->title }}</h4>      
         <div class="card">
             <div class="card-body py-3">{!! $volume->story !!}</div>
         </div>

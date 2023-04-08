@@ -11,7 +11,7 @@
     <div class="col-md-9">
         <div class="card">
             <div class="card-body py-4 px-4">
-                <h5 class="title-c">{{ $novel->judul }}</h5>
+                <h5 class="title-c">{{ $novel->title }}</h5>
                 <table>
                     <tr>
                         <td>Volume</td>
@@ -43,7 +43,7 @@
         </div>
         <div class="card p-4">
             <h5 class="mb-3">Sinopsis</h5>
-            <div>{!! $novel->sinopsis !!}</div>
+            <div class="mb-2">{!! $novel->synopsis !!}</div>
             <span>
                 <a href="/" class="btn btn-outline-primary btn-sm">Home</a>
             </span>
@@ -59,7 +59,7 @@
                 @foreach($novel->volumes->sortDesc()->values()->all() as $volume)
                 <a href="/novel/{{ $novel->slug . '/' . $volume->slug }}">
                     <li class="list-group-item">
-                        <i class="bi bi-book me-2"></i> {{ $volume->judul }} <small class="text-muted" style="float: right;">{{  \Carbon\Carbon::parse($volume->created_at)->isoFormat('D MMMM Y') }}</small>
+                        <i class="bi bi-book me-2"></i> {{ $volume->title }} <small class="text-muted" style="float: right;">{{  \Carbon\Carbon::parse($volume->created_at)->isoFormat('D MMMM Y') }}</small>
                     </li>
                 </a>
                 @endforeach
