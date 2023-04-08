@@ -46,6 +46,7 @@
         </div>
         <div class="card-body px-0 pt-0 pb-2">
           <div class="table-responsive p-0">
+            @if($users->count())
             <table class="table align-items-center justify-content-center mb-0">
               <thead>
                 <tr>
@@ -88,6 +89,9 @@
                 @endforeach
               </tbody>
             </table>
+            @else
+            <p class="text-center mt-4">No Users.</p>
+            @endif
           </div>
           <div style="float: right; margin-right: 20px; margin-top: 10px;">
             {{ $users->links() }}

@@ -37,7 +37,7 @@
   @endforeach
 </div>
 @else
-<p class="text-center mt-5">Novel tidak ada</p>
+<p class="text-center mt-5">No Novels</p>
 @endif
 
 {{ $novels->links() }}
