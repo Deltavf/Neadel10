@@ -97,7 +97,7 @@
             @endif
           </div>
           <div class="float-end me-4 mt-2">
-            {{ $novels->links('pagination.soft-ui') }}
+            {{ $genres->links('pagination.soft-ui') }}
           </div>
         </div>
       </div>

@@ -103,7 +103,7 @@
             @endif
           </div>
           <div class="float-end me-4 mt-2">
-            {{ $novels->links('pagination.soft-ui') }}
+            {{ $volumes->links('pagination.soft-ui') }}
           </div>
         </div>
       </div>
