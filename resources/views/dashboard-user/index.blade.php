@@ -93,8 +93,8 @@
             <p class="text-center mt-4">No Users.</p>
             @endif
           </div>
-          <div style="float: right; margin-right: 20px; margin-top: 10px;">
-            {{ $users->links() }}
+          <div class="float-end me-4 mt-2">
+            {{ $novels->links('pagination.soft-ui') }}
           </div>
         </div>
       </div>

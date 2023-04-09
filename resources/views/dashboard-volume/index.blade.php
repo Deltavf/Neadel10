@@ -102,8 +102,8 @@
             <p class="text-center mt-4">No Volumes.</p>
             @endif
           </div>
-          <div style="float: right; margin-right: 20px; margin-top: 10px;">
-            {{ $volumes->links() }}
+          <div class="float-end me-4 mt-2">
+            {{ $novels->links('pagination.soft-ui') }}
           </div>
         </div>
       </div>

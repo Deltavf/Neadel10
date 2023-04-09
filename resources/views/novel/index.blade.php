@@ -40,6 +40,8 @@
 <p class="text-center mt-5">No Novels</p>
 @endif
 
-{{ $novels->links() }}
+<div class="float-end mb-5">
+  {{ $novels->links('pagination.niceadmin') }}
+</div>
 
 @endsection
