@@ -1,3 +1,4 @@
+@if($paginator->previousPageUrl() != '' || $paginator->nextPageUrl() != '')
 <nav aria-label="Page navigation example">
   <ul class="pagination">
     <li class="page-item">
@@ -16,3 +17,4 @@
     </li>
   </ul>
 </nav>
+@endif
