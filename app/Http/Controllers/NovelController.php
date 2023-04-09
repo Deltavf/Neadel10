@@ -11,7 +11,7 @@ class NovelController extends Controller
     public function index() {
         $novels = Novel::latest();
         if(request('search')) {
-            $novels->where('title', 'like', '%' . request('search') . '%');
+            $novels->where('title', 'like', request('search') . '%');
         }
         return view('novel.index', [
             'novels' => $novels->simplePaginate(18)
@@ -20,7 +20,8 @@ class NovelController extends Controller
 
     public function detail(Novel $novel) {
         return view('novel.detail', [
-            'novel' => $novel
+            'novel' => $novel,
+            'volumes' => Volume::latest('id')->where('novel_id', $novel->id)->select('title', 'slug', 'created_at')->get()
         ]);
     }
 
@@ -28,8 +29,8 @@ class NovelController extends Controller
         return view('novel.volume', [
             'novel' => $novel,
             'volume' => $volume,
-            'next' => Volume::where('novel_id', $novel->id)->where('id', '>', $volume->id)->orderBy('id')->first(),
-            'previous' => Volume::where('novel_id', $novel->id)->where('id', '<', $volume->id)->orderBy('id', 'desc')->first()
+            'next' => Volume::where('novel_id', $novel->id)->where('id', '>', $volume->id)->select('slug')->orderBy('id')->first(),
+            'previous' => Volume::where('novel_id', $novel->id)->where('id', '<', $volume->id)->select('slug')->orderBy('id', 'desc')->first()
         ]);
     }
 

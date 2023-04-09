@@ -13,10 +13,10 @@ class DashboardGenreController extends Controller
      */
     public function index()
     {
-        $genres = Genre::latest()->select('name', 'slug', 'created_at');
+        $genres = Genre::latest('id')->select('name', 'slug', 'created_at');
 
         if(request('search')) {
-            $genres->where('name', 'like', '%' . request('search') . '%');
+            $genres->where('name', 'like', request('search') . '%');
         }
         return view('dashboard-genre.index', [
             'genres' => $genres->simplePaginate(15)

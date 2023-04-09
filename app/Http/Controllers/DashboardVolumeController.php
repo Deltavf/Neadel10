@@ -15,7 +15,7 @@ class DashboardVolumeController extends Controller
      */
     public function index(Novel $novel)
     {
-        $volume = Volume::latest()->where('novel_id', $novel->id)->select('title', 'slug');
+        $volume = Volume::latest('id')->where('novel_id', $novel->id)->select('title', 'slug');
         if(request('search')) {
             $volume->where('title', 'like', '%' . request('search') . '%');
         }

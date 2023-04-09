@@ -16,7 +16,7 @@
           <tr>
             <td>Volume</td>
             <td><span class="mx-1">:</span></td>
-            <td>{{ $novel->volumes->count() }}</td>
+            <td>{{ $volumes->count() }}</td>
           </tr>
           <tr>
             <td>Status</td>
@@ -55,9 +55,9 @@
   <div class="col">
     <div class="card p-4">
       <h5 class="mb-3">Volume List</h5>
-      @if($novel->volumes->count())
+      @if($volumes->count())
       <ul class="list-group">
-        @foreach($novel->volumes->sortDesc()->values()->all() as $volume)
+        @foreach($volumes as $volume)
         <a href="/novel/{{ $novel->slug . '/' . $volume->slug }}">
           <li class="list-group-item">
             <i class="bi bi-book me-2"></i> {{ $volume->title }} <small class="text-muted" style="float: right;">{{

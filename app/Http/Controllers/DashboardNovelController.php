@@ -21,11 +21,11 @@ class DashboardNovelController extends Controller
         if(auth()->user()->role == 'admin') {
             $novels = Novel::join('users', 'novels.user_id', '=', 'users.id')->select('novels.title', 'novels.slug', 'novels.cover', 'users.username')->withCount('volumes')->orderBy('novels.id', 'desc');
         } else {
-            $novels = Novel::latest()->select('title', 'slug', 'cover')->withCount('volumes')->where('user_id', auth()->user()->id);
+            $novels = Novel::latest('id')->select('title', 'slug', 'cover')->withCount('volumes')->where('user_id', auth()->user()->id);
         }
 
         if(request('search')) {
-            $novels->where('novels.title', 'like', '%' . request('search') . '%');
+            $novels->where('novels.title', 'like', request('search') . '%');
         }
 
         return view('dashboard-novel.index', [

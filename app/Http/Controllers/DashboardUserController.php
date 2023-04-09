@@ -12,10 +12,10 @@ class DashboardUserController extends Controller
      */
     public function index()
     {
-        $users = User::latest();
+        $users = User::latest('id')->select('username', 'created_at');
 
         if(request('search')) {
-            $users->where('username', 'like', '%' . request('search') . '%');
+            $users->where('username', 'like', request('search') . '%');
         }
 
         return view('dashboard-user.index', [
