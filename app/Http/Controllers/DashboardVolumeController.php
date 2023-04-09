@@ -21,7 +21,7 @@ class DashboardVolumeController extends Controller
         }
 
         return view('dashboard-volume.index', [
-            'volumes' => $volume->paginate(10),
+            'volumes' => $volume->simplePaginate(15),
             'novel' => $novel
         ]); 
     }

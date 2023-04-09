@@ -19,7 +19,7 @@ class DashboardUserController extends Controller
         }
 
         return view('dashboard-user.index', [
-            'users' => $users->paginate(10)
+            'users' => $users->simplePaginate(15)
         ]);
     }
 

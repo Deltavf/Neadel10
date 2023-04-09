@@ -29,7 +29,7 @@ class DashboardNovelController extends Controller
         }
 
         return view('dashboard-novel.index', [
-            'novels' => $novels->paginate(10)
+            'novels' => $novels->simplePaginate(15)
         ]);
     }
 

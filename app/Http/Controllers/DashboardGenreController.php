@@ -19,7 +19,7 @@ class DashboardGenreController extends Controller
             $genres->where('name', 'like', '%' . request('search') . '%');
         }
         return view('dashboard-genre.index', [
-            'genres' => $genres->paginate(10)
+            'genres' => $genres->simplePaginate(15)
         ]);
     }
 
