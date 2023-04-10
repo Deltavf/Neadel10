@@ -33,43 +33,84 @@
 </head>
 
 <body>
-  <nav class="navbar navbar-expand-lg bg-primary navbar-dark">
+  <nav class="navbar navbar-expand-lg bg-primary navbar-dark ">
     <div class="container">
       <a class="navbar-brand">Neadel</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link @if(Request::is('/') || Request::is('novel*')) active @endif" aria-current="page"
-              href="/">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link @if(Request::is('/bookmark') || Request::is('bookmark*')) active @endif" aria-current="page"
-              href="/bookmark">Bookmark</a>
+      <div class="d-md-none">
+        <a data-bs-toggle="dropdown">
+          <i class="bi bi-search" style="color: white;"></i>
+        </a>
+        <ul class="dropdown-menu pt-3" style="width: 100%;">
+          <li class="container">
+            <form action="/" name="search" class="px-3">
+              <div class="input-group">
+                <input type="text" class="form-control py-1" placeholder="Search Novel" name="search"
+                  value="{{ request('search') }}">
+                <button class="btn btn-primary" type="submit">
+                  <i class="bi bi-search"></i>
+                </button>
+              </div>
+            </form>
           </li>
         </ul>
       </div>
-      <nav class="header-nav ms-auto">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            @if(auth()->guest())
-            <a class="nav-link active" href="/login">Login</a>
-            @else
-            <a class="nav-link active" href="/dashboard/novel">{{ auth()->user()->username }}</a>
-            @endif
-          </li>
-        </ul>
-      </nav>
+      <div class="d-none d-md-block">
+        <form action="" class="m-0 p-0">
+          <div class="input-group">
+            <input type="text" class="form-control py-1" placeholder="Search Novel" name="search"
+              value="{{ request('search') }}">
+            <button class="btn btn-primary" type="submit">
+              <i class="bi bi-search"></i>
+            </button>
+          </div>
+        </form>
+      </div>
     </div>
   </nav>
 
   <div class="container mt-4">
     @yield('konten')
   </div>
-  <!-- End #main -->
+
+  <nav class="navbar navbar-expand-lg fixed-bottom px-0 py-1"
+    style="background-color: #ffffff; box-shadow: 0 -2px 3px 0 rgba(0,0,0,0.1);">
+    <div class="container">
+      <div class="col-4">
+        <a href="/" class="text-dark">
+          <center>
+            @if(Request::is('/'))
+            <i class="ri ri-home-6-fill" style="font-size: 1.3rem; color: #38A7FF"></i>
+            <span class="d-block" style="font-size: 13px; color: #38A7FF;">HOME</span>
+            @else
+            <i class="ri ri-home-6-line" style="font-size: 1.3rem; color: #black"></i>
+            <span class="d-block" style="font-size: 13px; color: #black;">HOME</span>
+            @endif
+          </center>
+        </a>
+      </div>
+      <div class="col-4">
+        <a href="/bookmark" class="text-dark">
+          <center>
+            @if(Request::is('bookmark'))
+            <i class="ri  ri-bookmark-2-fill" style="font-size: 1.3rem; color: #38A7FF"></i>
+            <span class="d-block" style="font-size: 13px; color: #38A7FF;">BOOKMARK</span>
+            @else
+            <i class="ri  ri-bookmark-2-line" style="font-size: 1.3rem; color: #black"></i>
+            <span class="d-block" style="font-size: 13px; color: #black;">BOOKMARK</span>
+            @endif
+          </center>
+        </a>
+      </div>
+      <div class="col-4">
+        <a href="/login" class="text-dark">
+          <center>
+            <i class="ri   ri-account-circle-line" style="font-size: 1.3rem; color: #black"></i>
+            <span class="d-block" style="font-size: 13px; color: #black;">Login</span>
+          </center>
+        </a>
+      </div>
+    </div>
+  </nav>
 
   <!-- Vendor JS Files -->
   <script src="{{ asset('vendor/bootstrap/apexcharts/apexcharts.min.js') }}"></script>
