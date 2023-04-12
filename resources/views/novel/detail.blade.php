@@ -59,8 +59,7 @@
         @foreach($volumes as $volume)
         <a href="/novel/{{ $novel->slug . '/' . $volume->slug }}">
           <li class="list-group-item">
-            <i class="bi bi-book me-2"></i> {{ $volume->title }} <small class="text-muted" style="float: right;">{{
-              \Carbon\Carbon::parse($volume->created_at)->isoFormat('D MMMM Y') }}</small>
+            <i class="bi bi-book me-2" ></i> {{ $volume->title }} 
           </li>
         </a>
         @endforeach
@@ -70,6 +69,13 @@
       @endif
     </div>
   </div>
+</div>
+<div class="row mb-5">
+    <div class="col">
+        <div class="card px-4 pt-5 pb-4">
+            <div id="disqus_thread"></div>
+        </div>
+    </div>
 </div>
 @endsection
 @section('js')
@@ -92,4 +98,13 @@
       }
   })
 </script>
+<script>
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://neadel.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 @endsection
