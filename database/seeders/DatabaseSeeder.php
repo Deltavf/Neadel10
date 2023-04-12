@@ -25,38 +25,67 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        // User::create([
-        //     'username' => 'Delta',
-        //     'password' => Hash::make('Deltanovel82#'),
-        //     'email' => 'delta@gmail.com',
-        //     'role' => 'admin',
-        // ]);
+        User::create([
+            'username' => 'Delta',
+            'password' => Hash::make('12345678'),
+            'email' => 'delta@gmail.com',
+            'role' => 'admin',
+        ]);
 
-        // User::create([
-        //     'username' => 'Keynea',
-        //     'password' => Hash::make('Keynea123_'),
-        //     'email' => 'keynea@gmail.com',
-        //     'role' => 'uploader',
-        // ]);
+        User::create([
+            'username' => 'zidan',
+            'password' => Hash::make('12345678'),
+            'email' => 'zidan@gmail.com',
+            'role' => 'uploader',
+        ]);
 
+        User::create([
+            'username' => 'alja',
+            'password' => Hash::make('12345678'),
+            'email' => 'alja@gmail.com',
+            'role' => 'uploader',
+        ]);
+
+        User::create([
+            'username' => 'alwy',
+            'password' => Hash::make('12345678'),
+            'email' => 'alwy@gmail.com',
+            'role' => 'uploader',
+        ]);
+
+        User::create([
+            'username' => 'ridho',
+            'password' => Hash::make('12345678'),
+            'email' => 'ridho@gmail.com',
+            'role' => 'uploader',
+        ]);
+
+        User::create([
+            'username' => 'evan',
+            'password' => Hash::make('12345678'),
+            'email' => 'evan@gmail.com',
+            'role' => 'uploader',
+        ]);
+
+        die();
         
-            Novel::create([
-                'user_id' => 2,
-                'title' => 'The Lazy Prince Becomes A Genius',
-                'slug' => 'the-lazy-prince-becomes-a-genius',
-                'synopsis' => '<p>Airn Fareira adalah anak laki-laki yang tidur untuk lari dari kenyataan.</p><p>Orang-orang mengejeknya, memanggilnya &#8216;deadbeat&#8217;, tapi dia tidak ingin berubah.</p><p>Sampai suatu hari, dia memimpikan seorang pendekar pedang… Itu adalah mimpi tentang seorang pria tanpa bakat yang telah berlatih dengan mengayunkan pedangnya selama beberapa dekade.</p>',
-                'status' => 'Ongoing',
-                'cover' => 'the-lazy-prince-becomes-a-genius-26431bc9bcb42f.webp'
-            ]);
+            // Novel::create([
+            //     'user_id' => 2,
+            //     'title' => 'The Lazy Prince Becomes A Genius',
+            //     'slug' => 'the-lazy-prince-becomes-a-genius',
+            //     'synopsis' => '<p>Airn Fareira adalah anak laki-laki yang tidur untuk lari dari kenyataan.</p><p>Orang-orang mengejeknya, memanggilnya &#8216;deadbeat&#8217;, tapi dia tidak ingin berubah.</p><p>Sampai suatu hari, dia memimpikan seorang pendekar pedang… Itu adalah mimpi tentang seorang pria tanpa bakat yang telah berlatih dengan mengayunkan pedangnya selama beberapa dekade.</p>',
+            //     'status' => 'Ongoing',
+            //     'cover' => 'the-lazy-prince-becomes-a-genius-26431bc9bcb42f.webp'
+            // ]);
             
-            Novel::create([
-                'user_id' => 2,
-                'title' => 'Seirei Gensouki LN',
-                'slug' => 'seirei-gensouki-ln',
-                'synopsis' => '<p>Amakawa Haruto meninggal sebelum dia berkesempatan untuk bersatu kembali dengan teman masa kecilnya yang menghilang lima tahun lalu. Rio, seorang bocah lelaki yang tinggal di daerah kumuh mencari balas dendam untuk ibunya yang dibunuh dengan darah dingin di depannya ketika dia baru berusia lima tahun.</p><p>Ada bumi yang banyak diketahui dan ada dunia alternatif. Dua orang, masing-masing dengan latar belakang dan nilai-nilai mereka sendiri. Untuk alasan yang aneh, ingatan dan kepribadian Haruto, orang yang seharusnya mati bangkit kembali di tubuh Rio. Karena keduanya bingung atas ingatan dan kepribadian mereka yang menyatu bersama, Rio (Haruto) memutuskan untuk hidup di dunia baru ini.</p><p>Bersamaan dengan ingatan Haruto, Rio membangkitkan kekuatan yang tidak dikenal tetapi istimewa. Jika dia menggunakannya, sepertinya dia bisa hidup lebih baik, tapi sebelum itu, Rio mengalami penculikan yang mengakibatkan melibatkan dua putri Kerajaan Bertam.</p><p>Setelah menyelamatkan para putri, Rio diberikan beasiswa untuk menghadiri Royal Academy, sebuah sekolah untuk orang kaya dan berkuasa. Latar belakangnya adalah anak yatim miskin yang pernah tinggal di daerah kumuh, sekolah yang penuh dengan bangsawan agak tempat yang menjijikkan untuk tinggal di.</p>',
-                'status' => 'End',
-                'cover' => 'seirei-gensouki-ln-26431bd143e0b9.webp'
-            ]);
+            // Novel::create([
+            //     'user_id' => 2,
+            //     'title' => 'Seirei Gensouki LN',
+            //     'slug' => 'seirei-gensouki-ln',
+            //     'synopsis' => '<p>Amakawa Haruto meninggal sebelum dia berkesempatan untuk bersatu kembali dengan teman masa kecilnya yang menghilang lima tahun lalu. Rio, seorang bocah lelaki yang tinggal di daerah kumuh mencari balas dendam untuk ibunya yang dibunuh dengan darah dingin di depannya ketika dia baru berusia lima tahun.</p><p>Ada bumi yang banyak diketahui dan ada dunia alternatif. Dua orang, masing-masing dengan latar belakang dan nilai-nilai mereka sendiri. Untuk alasan yang aneh, ingatan dan kepribadian Haruto, orang yang seharusnya mati bangkit kembali di tubuh Rio. Karena keduanya bingung atas ingatan dan kepribadian mereka yang menyatu bersama, Rio (Haruto) memutuskan untuk hidup di dunia baru ini.</p><p>Bersamaan dengan ingatan Haruto, Rio membangkitkan kekuatan yang tidak dikenal tetapi istimewa. Jika dia menggunakannya, sepertinya dia bisa hidup lebih baik, tapi sebelum itu, Rio mengalami penculikan yang mengakibatkan melibatkan dua putri Kerajaan Bertam.</p><p>Setelah menyelamatkan para putri, Rio diberikan beasiswa untuk menghadiri Royal Academy, sebuah sekolah untuk orang kaya dan berkuasa. Latar belakangnya adalah anak yatim miskin yang pernah tinggal di daerah kumuh, sekolah yang penuh dengan bangsawan agak tempat yang menjijikkan untuk tinggal di.</p>',
+            //     'status' => 'End',
+            //     'cover' => 'seirei-gensouki-ln-26431bd143e0b9.webp'
+            // ]);
             
             // Novel::create([
             //     'user_id' => 2,
@@ -67,14 +96,14 @@ class DatabaseSeeder extends Seeder
             //     'cover' => 'genjitsu-shugi-yuusha-no-oukoku-saikenki-ln-26431bc3dec2d0.webp'
             // ]);
 
-            Novel::create([
-                'user_id' => 2,
-                'title' => 'Yumemiru Danshi wa Genjitsushugisha LN',
-                'slug' => 'yumemiru-danshi-wa-genjitsushugisha-ln',
-                'synopsis' => '<p>Sajou Wataru tergila-gila dengan teman sekelasnya Natsukawa Aika sampai-sampai dia hidup dalam lamunan tentang cinta dan hubungan timbal balik mereka, tanpa henti mendekatinya di setiap kesempatan. Namun, suatu hari, Wataru siuman, dan harus menghadapi kenyataan.</p><p>“Tidak mungkin aku cocok untuk bunga yang tidak bisa dijangkau seperti dia, kan…?”</p><p>Setelah mulai melihat kenyataan sebagaimana adanya, Wataru mulai menjaga jarak tertentu dengan Aika, yang membuatnya kacau balau.</p><p>“Apakah dia…membenciku sekarang…?”</p><p>Hasil dari kesalahpahaman ini adalah kebangkitan perasaan bawah sadar yang datang dan pergi!? Maka dimulailah romcom dari perasaan sepihak yang saling menguntungkan, diganggu oleh kesalahpahaman!</p>',
-                'status' => 'Ongoing',
-                'cover' => 'yumemiru-danshi-wa-genjitsushugisha-ln-26431bbcd8127d.webp',
-            ]);
+            // Novel::create([
+            //     'user_id' => 2,
+            //     'title' => 'Yumemiru Danshi wa Genjitsushugisha LN',
+            //     'slug' => 'yumemiru-danshi-wa-genjitsushugisha-ln',
+            //     'synopsis' => '<p>Sajou Wataru tergila-gila dengan teman sekelasnya Natsukawa Aika sampai-sampai dia hidup dalam lamunan tentang cinta dan hubungan timbal balik mereka, tanpa henti mendekatinya di setiap kesempatan. Namun, suatu hari, Wataru siuman, dan harus menghadapi kenyataan.</p><p>“Tidak mungkin aku cocok untuk bunga yang tidak bisa dijangkau seperti dia, kan…?”</p><p>Setelah mulai melihat kenyataan sebagaimana adanya, Wataru mulai menjaga jarak tertentu dengan Aika, yang membuatnya kacau balau.</p><p>“Apakah dia…membenciku sekarang…?”</p><p>Hasil dari kesalahpahaman ini adalah kebangkitan perasaan bawah sadar yang datang dan pergi!? Maka dimulailah romcom dari perasaan sepihak yang saling menguntungkan, diganggu oleh kesalahpahaman!</p>',
+            //     'status' => 'Ongoing',
+            //     'cover' => 'yumemiru-danshi-wa-genjitsushugisha-ln-26431bbcd8127d.webp',
+            // ]);
 
             // Novel::create([
             //     'user_id' => 1,

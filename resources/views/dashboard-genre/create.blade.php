@@ -39,7 +39,7 @@
                 <div class="form-group">
                   <label for="name" class="form-control-label">Name</label>
                   <input type="text" name="name" id="name" value="{{ old('name') }}" class="form-control"
-                    placeholder="Genre Name" required>
+                    placeholder="Genre Name" required autofocus>
                   @error('name')<small class="text-danger">{{ $message }}</small>@enderror
                   @if(session()->has('status'))<small class="text-danger">{{ session('status') }}</small>@endif
                 </div>

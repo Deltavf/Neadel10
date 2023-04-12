@@ -36,16 +36,15 @@
   <nav class="navbar navbar-expand-lg bg-primary navbar-dark ">
     <div class="container">
       <a class="navbar-brand">Neadel</a>
-      @if(!Request::is('author*'))
       <div class="d-md-none">
         <a data-bs-toggle="dropdown">
           <i class="bi bi-search" style="color: white;"></i>
         </a>
         <ul class="dropdown-menu pt-3" style="width: 100%;">
           <li class="container">
-            <form action="/" name="search" class="px-3">
+            <form @if(!Request::is('author*')) action="/" @else action="/author" @endif name="search" class="px-3">
               <div class="input-group">
-                <input type="text" class="form-control py-1" placeholder="Search Novel" name="search"
+                <input type="text" class="form-control py-1" placeholder="Search @if(!Request::is('author*')) Novel @else Author @endif" name="search"
                   value="{{ request('search') }}">
                 <button class="btn btn-primary" type="submit">
                   <i class="bi bi-search"></i>
@@ -56,9 +55,9 @@
         </ul>
       </div>
       <div class="d-none d-md-block">
-        <form action="/" class="m-0 p-0">
+        <form @if(!Request::is('author*')) action="/" @else action="/author" @endif class="m-0 p-0">
           <div class="input-group">
-            <input type="text" class="form-control py-1" placeholder="Search Novel" name="search"
+            <input type="text" class="form-control py-1" placeholder="Search @if(!Request::is('author*')) Novel @else Author @endif" name="search"
               value="{{ request('search') }}">
             <button class="btn btn-primary" type="submit">
               <i class="bi bi-search"></i>
@@ -66,7 +65,6 @@
           </div>
         </form>
       </div>
-      @endif
     </div>
   </nav>
 
