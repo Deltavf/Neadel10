@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\NovelController;
@@ -27,7 +28,13 @@ use App\Http\Controllers\DashboardArchiveVolumeController;
 Route::get('/', [NovelController::class, 'index']);
 Route::get('/novel/{novel:slug}', [NovelController::class, 'detail']);
 Route::get('/novel/{novel:slug}/{volume:slug}', [NovelController::class, 'volume']);
+
+// Rute Bookmark
 Route::get('/bookmark', [NovelController::class, 'bookmark']);
+
+// Rute author
+Route::get('/author', [AuthorController::class, 'index']);
+Route::get('/author/{user}', [AuthorController::class, 'profile']);
 
 // Rute Register
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');

@@ -25,21 +25,20 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        User::create([
-            'username' => 'Delta',
-            'password' => Hash::make('Deltanovel82#'),
-            'email' => 'delta@gmail.com',
-            'role' => 'admin',
-        ]);
+        // User::create([
+        //     'username' => 'Delta',
+        //     'password' => Hash::make('Deltanovel82#'),
+        //     'email' => 'delta@gmail.com',
+        //     'role' => 'admin',
+        // ]);
 
-        User::create([
-            'username' => 'Keynea',
-            'password' => Hash::make('Keynea123_'),
-            'email' => 'keynea@gmail.com',
-            'role' => 'uploader',
-        ]);
+        // User::create([
+        //     'username' => 'Keynea',
+        //     'password' => Hash::make('Keynea123_'),
+        //     'email' => 'keynea@gmail.com',
+        //     'role' => 'uploader',
+        // ]);
 
-        die();
         
             Novel::create([
                 'user_id' => 2,

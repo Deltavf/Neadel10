@@ -36,6 +36,7 @@
   <nav class="navbar navbar-expand-lg bg-primary navbar-dark ">
     <div class="container">
       <a class="navbar-brand">Neadel</a>
+      @if(!Request::is('author*'))
       <div class="d-md-none">
         <a data-bs-toggle="dropdown">
           <i class="bi bi-search" style="color: white;"></i>
@@ -65,6 +66,7 @@
           </div>
         </form>
       </div>
+      @endif
     </div>
   </nav>
 
@@ -75,7 +77,7 @@
   <nav class="navbar navbar-expand-lg fixed-bottom px-0 py-1"
     style="background-color: #ffffff; box-shadow: 0 -2px 3px 0 rgba(0,0,0,0.1);">
     <div class="container">
-      <div class="col-4">
+      <div class="col-3">
         <a href="/" class="text-dark">
           <center>
             @if(Request::is('/') || Request::is('novel*'))
@@ -88,7 +90,7 @@
           </center>
         </a>
       </div>
-      <div class="col-4">
+      <div class="col-3">
         <a href="/bookmark" class="text-dark">
           <center>
             @if(Request::is('bookmark'))
@@ -101,7 +103,20 @@
           </center>
         </a>
       </div>
-      <div class="col-4">
+      <div class="col-3">
+        <a href="/author" class="text-dark">
+          <center>
+            @if(Request::is('author*'))
+            <i class="ri ri-user-3-fill" style="font-size: 1.3rem; color: #38A7FF"></i>
+            <span class="d-block" style="font-size: 13px; color: #38A7FF;">AUTHOR</span>
+            @else
+            <i class="ri ri-user-3-line" style="font-size: 1.3rem; color: #black"></i>
+            <span class="d-block" style="font-size: 13px; color: #black;">AUTHOR</span>
+            @endif
+          </center>
+        </a>
+      </div>
+      <div class="col-3">
         @if(auth()->guest())
         <a href="/login" class="text-dark">
           <center>
