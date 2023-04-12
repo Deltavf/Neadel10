@@ -55,7 +55,7 @@
         </ul>
       </div>
       <div class="d-none d-md-block">
-        <form action="" class="m-0 p-0">
+        <form action="/" class="m-0 p-0">
           <div class="input-group">
             <input type="text" class="form-control py-1" placeholder="Search Novel" name="search"
               value="{{ request('search') }}">
@@ -78,7 +78,7 @@
       <div class="col-4">
         <a href="/" class="text-dark">
           <center>
-            @if(Request::is('/'))
+            @if(Request::is('/') || Request::is('novel*'))
             <i class="ri ri-home-6-fill" style="font-size: 1.3rem; color: #38A7FF"></i>
             <span class="d-block" style="font-size: 13px; color: #38A7FF;">HOME</span>
             @else
@@ -102,12 +102,21 @@
         </a>
       </div>
       <div class="col-4">
+        @if(auth()->guest())
         <a href="/login" class="text-dark">
           <center>
             <i class="ri   ri-account-circle-line" style="font-size: 1.3rem; color: #black"></i>
-            <span class="d-block" style="font-size: 13px; color: #black;">Login</span>
+            <span class="d-block" style="font-size: 13px; color: #black;">LOGIN</span>
           </center>
         </a>
+        @else
+        <a href="/dashboard/novel" class="text-dark">
+          <center>
+            <i class="ri   ri-account-circle-line" style="font-size: 1.3rem; color: #black"></i>
+            <span class="d-block" style="font-size: 13px; color: #black;">{{ auth()->user()->username }}</span>
+          </center>
+        </a>
+        @endif
       </div>
     </div>
   </nav>
