@@ -40,7 +40,7 @@ class NovelController extends Controller
     }
 
     public function likeNovel(Request $request) {
-        LikeNovel::create([
+        LikeNovel::firstOrCreate([
             'novel_id' => $request->id,
             'user_id' => auth()->user()->id,
         ]);
