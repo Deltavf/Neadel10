@@ -12,12 +12,12 @@
 </style>
 @section('konten')
 
-<h3 class="mb-3">Novel Updates @if(isset($nama)) {{ $nama }} @endif</h3>
+<h3 class="mb-3">Novel Updates</h3>
 @if($novels->count())
 <div class="row d-flex align-items-stretch px-2">
   @foreach($novels as $novel)
   <div class="col-xl-2 col-lg-2 col-md-3 col-4 px-2 mb-4">
-      <img src="{{ asset('img/novel/' . $novel->cover) }}" class="thumb d-block" alt="...">
+      <img src="{{ asset('img/novel/' . $novel->cover) }}" class="thumb d-block">
       <a href="/novel/{{ $novel->slug }}" class="text-decoration-none text-dark">
         <p style="font-size: 13px;" class="fw-semibold mt-2 mb-2 title-novel">{{ $novel->title }}</p>
       </a>
@@ -26,7 +26,7 @@
   @endforeach
 </div>
 @else
-<p class="text-center mt-5">No Novels</p>
+<p class="text-center mt-5">No Novels.</p>
 @endif
 
 <div class="mb-5 pb-4">

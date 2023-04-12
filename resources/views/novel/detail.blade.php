@@ -46,7 +46,6 @@
       <div class="mb-2">{!! $novel->synopsis !!}</div>
       <span>
         <button class="btn btn-outline-success btn-sm" id="bookmark" value="21" type="button">Bookmark</button>
-        <a href="/" class="btn btn-outline-primary btn-sm">Home</a>
       </span>
     </div>
   </div>
