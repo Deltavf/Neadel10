@@ -27,6 +27,10 @@ class Novel extends Model
         return $this->hasMany(Volume::class);
     }
 
+    public function likes() {
+        return $this->belongsToMany(User::class, 'like_novel');
+    }
+
     // Agar mengubah route resource yang berdasarkan id menjadi berdasarkan slug
     public function getRouteKeyName() {
         return 'slug';

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Novel;
 use App\Models\Volume;
+use App\Models\LikeNovel;
 use Illuminate\Http\Request;
 
 class NovelController extends Controller
@@ -36,5 +37,19 @@ class NovelController extends Controller
 
     public function bookmark() {
         return view('novel.bookmark');
+    }
+
+    public function likeNovel(Request $request) {
+        LikeNovel::create([
+            'novel_id' => $request->id,
+            'user_id' => auth()->user()->id,
+        ]);
+        
+        return redirect()->back();
+    }
+
+    public function unlikeNovel(Request $request) {
+        LikeNovel::where('novel_id', $request->id)->where('user_id', auth()->user()->id)->delete();
+        return redirect()->back();
     }
 }

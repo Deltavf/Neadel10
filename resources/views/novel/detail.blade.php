@@ -14,6 +14,11 @@
         <h5 class="title-c">{{ $novel->title }}</h5>
         <table>
           <tr>
+            <td>Like</td>
+            <td><span class="mx-1">:</span></td>
+            <td>{{ $novel->likes->count() }}</td>
+          </tr>
+          <tr>
             <td>Volume</td>
             <td><span class="mx-1">:</span></td>
             <td>{{ $volumes->count() }}</td>
@@ -45,6 +50,24 @@
       <h5 class="mb-3">Sinopsis</h5>
       <div class="mb-2">{!! $novel->synopsis !!}</div>
       <span>
+        @if(!auth()->guest())
+          @if($novel->user_id != auth()->user()->id)
+            @if($novel->likes->where('id', auth()->user()->id)->first())
+              <form action="/novel/{{ $novel->slug }}" method="post" class="d-inline">
+                @csrf
+                @method('delete')
+                <input type="hidden" name="id" value="{{ $novel->id }}">
+                <button class="btn btn-outline-primary btn-sm" type="submit">Liked</button>
+              </form>
+            @else
+              <form action="/novel/{{ $novel->slug }}" method="post" class="d-inline">
+                @csrf
+                <input type="hidden" name="id" value="{{ $novel->id }}">
+                <button class="btn btn-outline-primary btn-sm" type="submit">Like</button>
+              </form>
+            @endif
+          @endif
+        @endif
         <button class="btn btn-outline-success btn-sm" id="bookmark" value="21" type="button">Bookmark</button>
       </span>
     </div>

@@ -27,6 +27,8 @@ use App\Http\Controllers\DashboardArchiveVolumeController;
 // Rute Novel
 Route::get('/', [NovelController::class, 'index']);
 Route::get('/novel/{novel:slug}', [NovelController::class, 'detail']);
+Route::post('/novel/{novel:slug}', [NovelController::class, 'likeNovel']);
+Route::delete('/novel/{novel:slug}', [NovelController::class, 'unlikeNovel']);
 Route::get('/novel/{novel:slug}/{volume:slug}', [NovelController::class, 'volume']);
 
 // Rute Bookmark
