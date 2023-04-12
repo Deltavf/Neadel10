@@ -27,7 +27,7 @@ class AuthorController extends Controller
     }
 
     public function follow(User $user) {
-        Follow::create([
+        Follow::firstOrCreate([
             'followed_id' => $user->id,
             'follower_id' => auth()->user()->id
         ]);
