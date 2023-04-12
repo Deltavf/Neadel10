@@ -22,7 +22,31 @@
     </div>
     <div class="col-lg-10 col-8 py-2 ps-4">
         <h3 class="fw-bold">{{ $author->username }}</h3>
-        <span>{{ $author->novels->count() }} Novels</span>
+        <div class="row">
+          <div class="col-lg-2 col-5">
+            <span>{{ $author->novels->count() }} Novels</span>
+          </div>
+          <div class="col-lg-3 col-7">
+            <span class="">{{ $author->followers->count() }} Followers</span>
+          </div>
+        </div>
+        @if(!auth()->guest())
+          @if($author->username != auth()->user()->username)
+            @if($follow->count() == 0)
+              <form action="/author/{{ $author->username }}" method="post" class="mt-2">
+                @csrf
+                <button type="submit" class="btn btn-primary btn-sm">Follow</button>
+              </form>
+            @else
+              <form action="/author/{{ $author->username }}" method="post" class="mt-2">
+                @csrf
+                @method('delete')
+                <input type="hidden" name="id" value="{{ $follow[0]->id }}">
+                <button type="submit" class="btn btn-primary btn-sm">Followed</button>
+              </form>
+            @endif
+          @endif
+        @endif
     </div>
 </div>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Follow;
 use Illuminate\Http\Request;
 
 class AuthorController extends Controller
@@ -20,7 +21,22 @@ class AuthorController extends Controller
 
     public function profile(User $user) {
         return view('author.profile', [
-            'author' => $user
+            'author' => $user,
+            'follow' => Follow::where('followed_id', $user->id)->where('follower_id', auth()->user()->id)->get()
         ]);
+    }
+
+    public function follow(User $user) {
+        Follow::create([
+            'followed_id' => $user->id,
+            'follower_id' => auth()->user()->id
+        ]);
+
+        return redirect()->back();
+    }
+
+    public function unfollow(Request $request) {
+        Follow::destroy($request->id);
+        return redirect()->back();
     }
 }

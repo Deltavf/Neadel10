@@ -49,6 +49,10 @@ class User extends Authenticatable
         return $this->hasMany(Novel::class);
     }
 
+    public function followers() {
+        return $this->hasMany(Follow::class, 'followed_id');
+    } 
+
     public function getRouteKeyName(){
         return 'username';
     }

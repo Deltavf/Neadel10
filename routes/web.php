@@ -35,6 +35,8 @@ Route::get('/bookmark', [NovelController::class, 'bookmark']);
 // Rute author
 Route::get('/author', [AuthorController::class, 'index']);
 Route::get('/author/{user}', [AuthorController::class, 'profile']);
+Route::post('/author/{user}', [AuthorController::class, 'follow']);
+Route::delete('/author/{user}', [AuthorController::class, 'unfollow']);
 
 // Rute Register
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
