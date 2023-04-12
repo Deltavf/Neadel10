@@ -93,6 +93,12 @@
                           Volume</a>
                       </li>
                       <li>
+                        <form action="/dashboard/archive/novel/{{ $novel->slug }}" method="post">
+                          @csrf
+                          <button type="submit" class="dropdown-item border-radius-md">Archive</button>
+                        </form>
+                      </li>
+                      <li>
                         <a class="dropdown-item border-radius-md" href="/novel/{{ $novel->slug }}">Detail</a>
                       </li>
                       <li>

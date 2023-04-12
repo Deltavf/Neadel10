@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\File; 
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -68,6 +69,10 @@ class DashboardUserController extends Controller
      */
     public function destroy(User $user)
     {
+        foreach($user->novels as $novel) {
+            File::delete('img/novel/' . $novel->cover);
+        }
+
         User::destroy($user->id);
         return redirect('/dashboard/user')->with('status', 'Akun user telah di hapus.');
     }

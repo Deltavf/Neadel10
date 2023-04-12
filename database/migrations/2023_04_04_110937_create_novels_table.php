@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('novels', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->string('title');
             $table->string('slug')->unique();
             $table->enum('status', ['Ongoing', 'End']);
+            $table->boolean('archive')->default(1);
             $table->text('synopsis');
             $table->text('cover');
             $table->timestamps();

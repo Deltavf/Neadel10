@@ -18,8 +18,8 @@
   @foreach($novels as $novel)
   <div class="col-xl-2 col-lg-2 col-md-3 col-4 px-2 mb-4">
       <img src="{{ asset('img/novel/' . $novel->cover) }}" class="thumb d-block" alt="...">
-      <a href="/novel/{{ $novel->slug }}">
-        <p style="color: #012970; font-size: 13px;" class="fw-semibold mt-2 mb-2 title-novel">{{ $novel->title }}</p>
+      <a href="/novel/{{ $novel->slug }}" class="text-decoration-none text-dark">
+        <p style="font-size: 13px;" class="fw-semibold mt-2 mb-2 title-novel">{{ $novel->title }}</p>
       </a>
         <small style="font-size: 12px;">{{ $novel->created_at->diffForHumans() }}</small>
   </div>

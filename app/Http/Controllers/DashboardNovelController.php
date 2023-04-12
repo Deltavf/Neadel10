@@ -16,12 +16,11 @@ class DashboardNovelController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
+    public function index() {
         if(auth()->user()->role == 'admin') {
-            $novels = Novel::join('users', 'novels.user_id', '=', 'users.id')->select('novels.title', 'novels.slug', 'novels.cover', 'users.username')->withCount('volumes')->orderBy('novels.id', 'desc');
+            $novels = Novel::join('users', 'novels.user_id', '=', 'users.id')->select('novels.title', 'novels.slug', 'novels.cover', 'users.username')->where('archive', 1)->withCount('volumes')->orderBy('novels.id', 'desc');
         } else {
-            $novels = Novel::latest('id')->select('title', 'slug', 'cover')->withCount('volumes')->where('user_id', auth()->user()->id);
+            $novels = Novel::latest('id')->select('title', 'slug', 'cover')->where('archive', 1)->withCount('volumes')->where('user_id', auth()->user()->id);
         }
 
         if(request('search')) {
@@ -180,6 +179,6 @@ class DashboardNovelController extends Controller
     {
         Novel::destroy($novel->id);
         File::delete('img/novel/' . $novel->cover);
-        return redirect('/dashboard/novel')->with('status', 'Novel telah di hapus');
+        return redirect()->back()->with('status', 'Novel telah di hapus');
     }
 }

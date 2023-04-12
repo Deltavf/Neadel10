@@ -29,7 +29,7 @@
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
-  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3 "
+  <aside class="sidenav navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-3"
     id="sidenav-main">
     <div class="sidenav-header">
       <i class="fas fa-times p-3 cursor-pointer text-secondary opacity-5 position-absolute end-0 top-0 d-none d-xl-none"
@@ -40,8 +40,8 @@
       </a>
     </div>
     <hr class="horizontal dark mt-0">
-    <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
-      <ul class="navbar-nav">
+    <div class="collapse navbar-collapse" id="sidenav-collapse-main" style="height: inherit;">
+      <ul class="navbar-nav"  style="overflow: hidden;">
         <li class="nav-item">
           <a class="nav-link @if(Request::is('dashboard/novel*')) active @endif" href="/dashboard/novel">
             <div
@@ -49,6 +49,24 @@
               <i class="ni ni-book-bookmark"></i>
             </div>
             <span class="nav-link-text ms-1">Novel</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link @if(Request::is('dashboard/archive/novel*')) active @endif" href="/dashboard/archive/novel">
+            <div
+              class="@if(Request::is('dashboard/archive/novel*')) icon @endif icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-archive-2"></i>
+            </div>
+            <span class="nav-link-text ms-1">Archived Novel</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link @if(Request::is('dashboard/archive/volume*')) active @endif" href="/dashboard/archive/volume">
+            <div
+              class="@if(Request::is('dashboard/archive/volume*')) icon @endif icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="ni ni-archive-2"></i>
+            </div>
+            <span class="nav-link-text ms-1">Archived Volume</span>
           </a>
         </li>
         @if(auth()->user()->role == 'admin')
@@ -62,7 +80,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link @if(Request::is('dashboard/user*')) active @endif" href="/dashboard/genre">
+          <a class="nav-link @if(Request::is('dashboard/user*')) active @endif" href="/dashboard/user">
             <div
               class="icon icon-sm shadow border-radius-md bg-white text-center me-2 d-flex align-items-center justify-content-center">
               <svg width="12px" height="12px" viewBox="0 0 46 42" version="1.1" xmlns="http://www.w3.org/2000/svg"

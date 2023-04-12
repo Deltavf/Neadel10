@@ -15,7 +15,7 @@ class DashboardVolumeController extends Controller
      */
     public function index(Novel $novel)
     {
-        $volume = Volume::latest('id')->where('novel_id', $novel->id)->select('title', 'slug');
+        $volume = Volume::latest('id')->where('novel_id', $novel->id)->select('id', 'title', 'slug')->where('archive', 1);
         if(request('search')) {
             $volume->where('title', 'like', '%' . request('search') . '%');
         }
@@ -98,9 +98,9 @@ class DashboardVolumeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Novel $novel, Volume $volume)
+    public function destroy(Request $request)
     {
-        Volume::destroy($volume->id);
-        return redirect("/dashboard/novel/$novel->slug/volume")->with('status', 'Volume novel telah di hapus.');
+        Volume::destroy($request->id);
+        return redirect()->back()->with('status', 'Volume novel telah di hapus.');
     }
 }

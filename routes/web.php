@@ -8,6 +8,8 @@ use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\DashboardGenreController;
 use App\Http\Controllers\DashboardNovelController;
 use App\Http\Controllers\DashboardVolumeController;
+use App\Http\Controllers\DashboardArchiveNovelController;
+use App\Http\Controllers\DashboardArchiveVolumeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,3 +44,9 @@ Route::resource('/dashboard/novel', DashboardNovelController::class)->middleware
 Route::resource('/dashboard/novel/{novel:slug}/volume', DashboardVolumeController::class)->middleware('auth');
 Route::resource('/dashboard/genre', DashboardGenreController::class)->middleware('admin');
 Route::resource('/dashboard/user', DashboardUserController::class)->middleware('admin');
+Route::get('/dashboard/archive/novel/', [DashboardArchiveNovelController::class, 'index'])->middleware('auth');
+Route::post('/dashboard/archive/novel/{novel:slug}', [DashboardArchiveNovelController::class, 'archive'])->middleware('auth');
+Route::put('/dashboard/archive/novel/{novel:slug}', [DashboardArchiveNovelController::class, 'unarchive'])->middleware('auth');
+Route::get('/dashboard/archive/volume', [DashboardArchiveVolumeController::class, 'index'])->middleware('auth');
+Route::post('/dashboard/archive/volume', [DashboardArchiveVolumeController::class, 'archive'])->middleware('auth');
+Route::put('/dashboard/archive/volume', [DashboardArchiveVolumeController::class, 'unarchive'])->middleware('auth');

@@ -10,7 +10,7 @@
     </nav>
     <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
       <div class="ms-md-auto pe-md-3 d-flex align-items-center">
-        <form action="/dashboard/novel/{{ $novel->slug }}/volume">
+        <form action="/dashboard/archive/volume">
           <div class="input-group">
             <button type="submit" class="input-group-text text-body">
               <i class="fas fa-search" aria-hidden="true"></i>
@@ -39,8 +39,7 @@
     <div class="col-12">
       <div class="card mb-4">
         <div class="card-header pb-0">
-          <h6 class="d-inline">Volume | </h6><a href="/dashboard/novel/{{ $novel->slug }}/volume/create"
-            class="text-sm text-dark">Create Volume</a>
+          <h6 class="d-inline">Archived Volum</h6>
           <div style="float: right;">
             <i class="ni ni-bullet-list-67 mt-2" id="filterButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
           </div>
@@ -52,8 +51,8 @@
               <thead>
                 <tr>
                   <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Title</th>
-                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Date</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Novel Title</th>
+                  <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Volume Title</th>
                   <th></th>
                 </tr>
               </thead>
@@ -64,11 +63,10 @@
                     <h6 class="ms-3 text-sm">{{ $loop->iteration }}</h6>
                   </td>
                   <td>
-                    <p class="text-sm font-weight-bold mb-0">{{ $volume->title }}</p>
+                    <p class="text-sm font-weight-bold mb-0">{{ $volume->novel_title }}</p>
                   </td>
                   <td>
-                    <p class="text-sm font-weight-bold mb-0">{{ \Carbon\Carbon::parse($volume->created_at)->isoFormat('D
-                      MMMM Y') }}</p>
+                    <p class="text-sm font-weight-bold mb-0">{{ $volume->title }}</p>
                   </td>
                   <td class="align-middle">
                     <button class="btn btn-link text-secondary mb-0" id="dropdownMenuButton" data-bs-toggle="dropdown"
@@ -80,23 +78,16 @@
                       <li>
                         <form action="/dashboard/archive/volume" method="post">
                           @csrf
+                          @method('put')
                           <input type="hidden" name="id" value="{{ $volume->id }}">
-                          <button type="submit" class="dropdown-item border-radius-md">Archive</button>
+                          <button type="submit" class="dropdown-item border-radius-md">Unarchive</button>
                         </form>
                       </li>
                       <li>
-                        <a class="dropdown-item border-radius-md"
-                          href="/novel/{{ $novel->slug }}/{{ $volume->slug }}">Detail</a>
-                      </li>
-                      <li>
-                        <a class="dropdown-item border-radius-md"
-                          href="/dashboard/novel/{{ $novel->slug }}/volume/{{ $volume->slug }}/edit">Edit</a>
-                      </li>
-                      <li>
-                        <form action="/dashboard/novel/{{ $novel->slug }}/volume/{{ $volume->slug }}" method="post">
+                        <form action="/dashboard/novel/{{ $volume->novel_slug }}/volume/{{ $volume->slug }}" method="post">
                           @csrf
                           @method('delete')
-                          <input type="hidden" name="id" value="{{ $novel->id }}">
+                          <input type="hidden" name="id" value="{{ $volume->id }}">
                           <button type="submit" class="dropdown-item border-radius-md">Delete</button>
                         </form>
                       </li>
@@ -107,7 +98,7 @@
               </tbody>
             </table>
             @else
-            <p class="text-center mt-4">No Volumes.</p>
+            <p class="text-center mt-4">No Archived Volumes.</p>
             @endif
           </div>
           <div class="float-end me-4 mt-2">
