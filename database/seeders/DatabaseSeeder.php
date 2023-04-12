@@ -38,6 +38,8 @@ class DatabaseSeeder extends Seeder
             'email' => 'keynea@gmail.com',
             'role' => 'uploader',
         ]);
+
+        die();
         
             Novel::create([
                 'user_id' => 2,

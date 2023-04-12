@@ -39,7 +39,7 @@
     <div class="col-12">
       <div class="card mb-4">
         <div class="card-header pb-0">
-          <h6 class="d-inline">Archived Volum</h6>
+          <h6 class="d-inline">Archived Volume</h6>
           <div style="float: right;">
             <i class="ni ni-bullet-list-67 mt-2" id="filterButton" data-bs-toggle="dropdown" aria-expanded="false"></i>
           </div>

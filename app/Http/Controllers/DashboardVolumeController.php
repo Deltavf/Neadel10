@@ -80,7 +80,7 @@ class DashboardVolumeController extends Controller
     public function update(Novel $novel, Volume $volume, Request $request)
     {
         $rules = ['story' => 'required'];
-        if($request->title != $volume->title) {
+        if(strtolower($request->title) != strtolower($volume->title)) {
             $rules['title'] = ['required', new UniqueTitle(['volume', $novel->id])];
         } else {
             $rules['title'] = 'required';

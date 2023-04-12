@@ -125,8 +125,10 @@ class DashboardNovelController extends Controller
             'synopsis' => 'required',
         ];
 
-        if($request->title != $novel->title) {
+        if(strtolower($request->title) != strtolower($novel->title)) {
             $rules['title'] = ['required', new UniqueTitle(['novel', $novel->user_id])];
+        } else if($request->title != $novel->title) {
+            $rules['title'] = 'required';
         }
 
         if($request->hasFile('cover')) {
@@ -135,7 +137,7 @@ class DashboardNovelController extends Controller
         
         $validatedData = $request->validate($rules);
         
-        if($novel->title != $request->title) {
+        if(strtolower($request->title) != strtolower($novel->title)) {
             $validatedData['slug'] = SlugService::createSlug(Novel::class, 'slug', $validatedData['title']);
         } else {
             $validatedData['slug'] = $novel->slug;
